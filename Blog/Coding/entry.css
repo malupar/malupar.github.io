@@ -1,0 +1,25 @@
+
+.architecture{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding-bottom: 20px;
+    -moz-transform: scale(1.4);
+    zoom:(140%);
+}
+
+.codingBlock{
+    height: 100%;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: grey;
+    border-style: solid;
+}
+
+.center-sidebar{
+    position: sticky;
+    overflow-y: hidden;
+}

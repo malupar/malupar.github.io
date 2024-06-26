@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Teoría de códigos </title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="entry.css">
+    <script src="../blog.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div id="sidebar" class="sidebars to-left">
+      <div class="bio">
+        <ul class="bio-list">
+          <li class="bio-option">
+<<<<<<< HEAD
+            <a class="bio-link" href="en-entry.html">
+=======
+            <a class="bio-link" href="en-entry">
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+              <button class="bio-button">
+                <span><p class="bio-text">English version</p></span>
+              </button>
+            </a>
+          </li>
+          <li class="bio-option">
+            <a class="bio-link" href="../../Images/CVCorto.pdf" target="_blank">
+              <button class="bio-button">
+                <span><p class="bio-text">CV</p></span>
+              </button>
+            </a>
+          </li>
+          <li class="bio-option">
+<<<<<<< HEAD
+            <a class="bio-link" href="../../Blog.html">
+=======
+            <a class="bio-link" href="../../Blog">
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+              <button class="bio-button">
+                <span><p class="bio-text">Blog</p></span>
+              </button>
+            </a>
+          </li>
+          <li class="bio-option">
+<<<<<<< HEAD
+            <a class="bio-link" href="../../index.html">
+=======
+            <a class="bio-link" href="../../index">
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+            <button class="bio-button">
+              <span><p class="bio-text">Sobre mí</p></span>
+            </button>
+            </a>
+          </li>
+          <li class="bio-option">
+            <div class="theme-container">
+            <button class="dark-mode-button" ><img src="../../Images/sun.svg" class="logo" id="themeIcon"></button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="maincenter" class="center-sidebar">
+        <div class="index-bar"><h1>Teoría de códigos</h1></div>
+        <div class="blog-container">
+          <p>
+            En esta entrada documentaré el contenido visto en Algorithmic Higlights of Coding Theory, organizado por el CRM. 
+          </p>
+          <h2>Día 1</h2>
+          <p>
+            Comencemos repasando las bases de la teoría de códigos: <br>
+            Tenemos como elementos básicos $ \Sigma $ el alfabeto del que se compone nuestro mensaje.
+            <p>
+            Definición de distancia absoluta de Hamming: Sea $v, \hat{v} \in \Sigma^n \quad \Delta (v, \hat{v}) = \# \{\ i \ | \ v_i \neq \hat{v}_i\}$
+            </p>
+            <p>
+            Definición de distancia relativa de Hamming: $\delta (v, \hat{v}) = \frac{\Delta(v, \hat{v})}{n} \text{ en donde } \delta(v, w) \in [0, 1] \ \forall v,w \in \Sigma^n$
+            </p>
+            <p>
+                Arquitectura de la comunicación: <br>
+                <div class="architecture">
+                    $\large{\xrightarrow{m \in \Sigma^k}}$
+                    <div class="codingBlock">Codificador</div> $\large{\xrightarrow{v \in \Sigma^n}}$
+                    <div class="codingBlock">Canal</div> $\large{\xrightarrow{\hat{v} \in \Sigma^n}}$
+                    <div class="codingBlock">Decodificador</div>
+                    $\large{\xrightarrow{\hat{m} \in \Sigma^k}}$
+                </div>
+                Queremos saber bajo que condiciones $m = \hat{m}$ o en el caso de que no sea determinista querremos saber si $Pr[m = \hat{m}] \geq 1-o_n(1)$. <br>
+                Definimos el ratio como $Rate \triangleq \frac{k}{n}$ y contamos con dos nuevas funciones, una de codificación y decodificación respectivamente:<br> 
+                Definición de función de codificación y decodificación: $E: \Sigma^n \to \Sigma^k \quad D: \Sigma^k \to \Sigma^n$
+                Definición de capacidad de un canal: Máximo ratio tal que cuando $k, n \to \infty \ \exists E, D$ tal que $Pr[m= \hat{m}] = 1-o_n(1)$
+        </p>
+        <p>
+            Teorema de ruido de Shannon: <br>
+            $$Capacidad(BSC(p)) \geq 1-h(p) \text{ en donde h(p) es la entropia y se define como } h(p) = p\log_2 (\frac{1}{p}) + (1-p) \log_2 (\frac{1}{1-p})$$
+        </p>
+        <p>
+            Definiremos la distancia de Hamming para un código como $\Delta(C) = \min\limits_{x,y \in C \ x \neq y} \{ \Delta(x, y)\} \ $ en donde $ \ C = Im(E) \triangleq \{ E(n) |  m \in \Sigma^k\} \subseteq \Sigma^n$ <br>
+            A partir de esta definición podemos empezar a decir si los códigos son buenos para un canal, por ejemplo si tenemos un código $C$ tal que $\Delta(C) \leq 2e$ en donde $e$ es el máximo número de errores que podrá realizar un canal, entonces existe una pareja $v, w \in \Sigma^n$ tal que si el canal ha intercambiado $e$ de las coordenadas que tenían diferentes seremos incapaces de de determinar si se trataba de $v$ o $w$. <br>
+            También podemos definir la distancia relativa de Hamming para el código como $\delta(C) = \frac{\Delta(C)}{n}$.
+        </p>
+        <p>
+            A partir de ahora intentaremos maximizar $\delta(C)$ dado un ratio. Como el ratio y la capacidad son funciones que variarán entre 0 y 1 podemos representarlo con un gráfico.
+            <h4>Cota de Singleton</h4>
+            Ahora demostraremos la cota de Singleton que dividirá por la mitad la gráfica anterior de forma que nos quedan estas posibilidades:
+            <img src="Images/Singleton.png" style="margin-top: 10px;">
+            <details open> <summary class="titulo-desplegable">Demostración 1</summary>
+                $$\text{Supongamos una función de codificación cualquiera } E: \Sigma^k \to \Sigma^n \text{ y consideremos la proyección de las primeras } k-1 \text{ coordenadas.}$$
+                $$\pi \circ E: \Sigma^k \to \Sigma^{k-1} \text{ por lo tanto } \exists \ m_1 \neq m_2 \text{ tal que } \pi(E(m_1)) = \pi(E(m_2))$$
+                $$ \Delta(m1, m2) \leq n-k+1 \text{ y por lo tanto } \delta(C) \leq 1-\frac{k}{n}+\frac{1}{n} \text{ donde } \frac{k}{n} = \text{Ratio}$$ 
+                Para este resultado estamos asumiento en todo momento que el alfabeto está acotado.
+              </details>
+        </p>
+        <p>
+          <p>
+            <h4>Códigos de Reed-Solomon(1960) </h4>
+            Sea $\Sigma = F_q$ donde $F_q$ representa un campo finito con $q$ elementos. Entonces podemos representar un mensaje como $m = (m_0, ..., m_{k-1}), \ m(x) \cong \sum\limits_{i = 0}^{k-1} m_i x^i$. <br>
+            Fijamos $\alpha_1, \alpha_2, ..., \alpha_n \in F_q$ distintos entre sí. Enviaremos a través del canal la tupla $&lt;m(\alpha_1), m(\alpha_2), ..., m(\alpha_n)> \in F_q^n$.<br>Veamos que $\Delta(RS \ Code) \geq n-k+1$. Sea $m_1$ y $m_2$ los dos mensajes que minimizan la distancia de Hamming del código de Reed-Solomon. Definimos el polinomio $P(x) = (m1-m2)(x) = \sum\limits_{i=0}^{k-1}(m_{1,i}-m_{2,i})x^i$. Dado que $m_1 \neq m_2$ sabemos que $P(x)$ no es nulo con un grado $\leq k-1$. Esto implica que $\# \{i \ | \  P(\alpha_i) = 0\} \leq k-1$, ($P(x)$ puede tener hasta $k-1$ raices que en el peor de los casos serán los parámetros que habremos fijado). Esto implica que $\Delta(m_1, m_2) \geq n-(k-1) = n-k+1$. <br>
+            Hemos encontrado una función de codificación que iguala la cota de Singleton, es el momento de pensar en como descifrar el mensaje una vez hayan ocurrido los errores.
+            <h4>Problema de decodificación de Reed-Solomon</h4>
+            <strong>Dados:</strong> $F_q, n, k, e = \#$errores, $\alpha_1, \alpha_2, ..., \alpha_n \in F_q$ y distintos y la tupla $&lt;y_1, y_2, ..., y_n> \in F_q^n$.<br>
+            <strong>Tarea:</strong> Encontrar TODOS los polinomios tal que $\# \{ i \ | \ m(\alpha_i) \neq y-i\} \leq e$.
+        </p>
+
+        </p>
+        <h2>Día 2</h2>
+        <h2>Día 3</h2>
+        </div>
+    </div>
+  </body>
+</html>

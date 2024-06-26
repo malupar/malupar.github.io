@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Resolución de ideales libres de cuadrados </title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="entry.css">
+    <script src="../blog.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/blog-cells@0.7.1/dist/blog-cells.css" />
+    <script src="https://cdn.jsdelivr.net/npm/blog-cells@0.7.1/dist/blog-cells.js"></script>
+  </head>
+  <body>
+    <div id="sidebar" class="sidebars to-left">
+      <div class="bio">
+        <ul class="bio-list">
+          <li class="bio-option">
+            <a class="bio-link" href="en-entry.html">
+              <button class="bio-button">
+                <span><p class="bio-text">English version</p></span>
+              </button>
+            </a>
+          </li>
+          <li class="bio-option">
+            <a class="bio-link" href="../../Images/CVCorto.pdf" target="_blank">
+              <button class="bio-button">
+                <span><p class="bio-text">CV</p></span>
+              </button>
+            </a>
+          </li>
+          <li class="bio-option">
+            <a class="bio-link" href="../../Blog.html">
+              <button class="bio-button">
+                <span><p class="bio-text">Blog</p></span>
+              </button>
+            </a>
+          </li>
+          <li class="bio-option">
+            <a class="bio-link" href="../../index.html">
+            <button class="bio-button">
+              <span><p class="bio-text">Sobre mí</p></span>
+            </button>
+            </a>
+          </li>
+          <li class="bio-option">
+            <div class="theme-container">
+            <button class="dark-mode-button" ><img src="../../Images/sun.svg" class="logo" id="themeIcon"></button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="maincenter" class="center-sidebar">
+        <div class="index-bar"><h1>Desarrollo de algoritmos de poda para la resolución de ideales</h1></div>
+        <div class="blog-container">
+          <p>
+            En esta entrada documentaré el desarrollo y documentación de los algoritmos desarrollados.  Para ver el código en Python desarrollado para este proyecto de clic <a class="enlace" href="./teoria.html">aquí</a>. 
+          </p>
+          <h2>Introducción</h2>
+          <p>Hablar de ideales y teoría</p>
+          <!--Funciones generales-->
+<<<<<<< HEAD
+          <details> <summary class="titulo-desplegable">Documentación de las funciones generales</summary>
+            <p><code>parse_base</code> es una función que </p>
+            <p><code>generateExtremal</code> es una función que </p>
+          </details>
+          <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">
+            from random import shuffle
+from typing import Type
+
+trn = 0
+
+
+def lcm(a, b):
+    """
+    Parameters
+    ----------
+
+    Returns
+    -------
+    """
+
+=======
+          <h3>Funciones generales</h3>
+          <p><code>parse_base</code> es una función que </p>
+          <p><code>generateExtremal</code> es una función que </p>
+          <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">
+            from random import shuffle
+def lcm(a, b):
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+    assert len(a) == len(b), "lcm: Both vectors should have same length"
+
+    return [max([a[i],b[i]]) for i in range(len(a))]
+
+def sumVecs(a, b):
+<<<<<<< HEAD
+    """
+    Parameters
+    ----------
+
+    Returns
+    -------
+    """
+
+=======
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+    assert len(a) == len(b), "sumVecs: Both vectors should have same length"
+
+    return list(map(lambda x,y: x+y, a,b))
+
+def multVecs(a, b):
+<<<<<<< HEAD
+    """ We compute the
+    Parameters
+    ----------
+      a : list
+        First vector
+      b : list
+
+    Returns
+    -------
+    """
+
+=======
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+    assert len(a) == len(b), "multVecs: Both vectors should have same length"
+
+    return list(map(lambda x,y: x*y, a,b))
+
+def parse_base(base, variables):
+<<<<<<< HEAD
+    """ We parse the
+    Parameters
+    ----------
+      base : list
+      variables : list
+
+    Returns
+    -------
+    """
+
+=======
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+    n = len(base)
+    answer = []
+    for i in range(n):
+        exponents = []
+        for j in range(len(variables)):
+            pos = base[i].find(variables[j])
+            if pos == -1:
+                exponents.append(0)
+<<<<<<< HEAD
+            elif pos+len(variables[j]) < len(base[i]) and base[i][pos+len(variables[j])] == "^":
+=======
+            elif pos+2 < len(base[i]) and base[i][pos+len(variables[j])] == "^":
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+                exponents.append(int(base[i][pos+len(variables[j])+1]))
+            else:
+                exponents.append(1)
+        answer.append(exponents)
+    return answer
+
+def PrintNum(coord, fancy = False, var = [], end = True):
+<<<<<<< HEAD
+    """
+    Parameters
+    ----------
+      fancy : Boolean, optional
+      var : list, optional
+      end : Boolean, optional
+    """
+
+=======
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+    if not fancy:
+        print(coord, end = '')
+    else:
+        for j in range(len(coord)):
+            if coord[j] > 0:
+                print(vars[j], end='')
+                if coord[j] > 1:
+                    print("^"+str(coord[j]), end='')
+    if end:
+      print()
+
+def PrintList(lst, vars):
+<<<<<<< HEAD
+    """
+    Parameters
+    ----------
+      lst : list
+      vars : list
+    """
+
+    for x in lst:
+      PrintNum(x, True, vars, False)
+      print("", end = ' ')
+    print()
+          </script>
+          <!--Clase ideal-->
+          <details> <summary class="titulo-desplegable">Documentación de la clase de ideales</summary>
+            <p><code>parse_base</code> es una función que </p>
+            <p><code>generateExtremal</code> es una función que </p>
+          </details>
+          <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">class Ideal:
+            """
+            A class that represents an ideal
+        
+            Attributes
+            ----------
+            self.baseIdeal : list
+              A list of lists that represent the coordinates of the vectors that generate this ideal
+        
+            Methods
+            -------
+            exp(exponent)
+            intersect(idealB, simplify)
+            getPartition()
+            generatePartialExtremal(numVars)
+            generateExtremal(numVars)
+            allCombinations(i, numVars)
+            generateFi(j, i, s, q, r, curList)
+            generateSimplicialComplex(r, q, simplify)
+            generateEdgesFaces()
+            getLI()
+            generateSubpruning()
+            """
+            def __init__(self, baseIdeal = [], vars: list[str] = []):
+              if len(baseIdeal) > 0 and type(baseIdeal[0][0]) == str:
+                baseIdeal = parse_base(baseIdeal, vars)
+              self.baseIdeal = baseIdeal
+        
+            def __pow__(self, power):
+              I = Ideal(self.exp(power))
+              I.getLI()
+              return I
+        
+            def exp(self, exponent: int) -> list[list[int]]:
+              """ Exponentiate this ideal to an exponent - A recursive binary exponentiation
+              Parameters
+              ----------
+                  exponent : int
+                    integer to which we elevate this ideal
+              """
+        
+              if exponent == 1:
+                return self.baseIdeal
+              cur = self.exp(exponent//2)
+              cur = [sumVecs(cur[i], cur[j]) for i in range(len(cur)) for j in range(i, len(cur))]
+              if exponent&1:
+                cur = [sumVecs(i, j) for i in cur for j in self.baseIdeal]
+        
+              return cur
+        
+        
+            def intersect(self, idealB, simplify: bool = False):
+              """ We intersect the base of this ideal and another and simplify if necessary
+              Parameters
+              ----------
+                  idealB : Ideal
+                    ideal with which we intersect this ideal
+                  simplify : Boolean, optional
+                    boolean True if we keep only the minimal generator and False otherwise
+        
+              Returns
+              -------
+                  Ideal corresponding to the intersection of this ideal and idealB
+              """
+        
+              ans = Ideal([lcm(x, y) for x in self.baseIdeal for y in idealB.baseIdeal])
+              if simplify:
+                ans.getLI()
+              return ans
+        
+            def getPartition(self, variable = None) -> list[int]:
+              """ We will return all the index that contain a particular variable
+              Parameters
+              ----------
+              variable : str, optional
+        
+              Returns
+              -------
+                Set of all index that contain a particular variable
+              """
+        
+              assert self.baseIdeal != [], "getPartition: Ideal cannot be empty"
+        
+              ans = []
+              for i in len(self.baseIdeal[0]):
+                found = False
+                for j in range(len(self.baseIdeal)):
+                  if self.baseIdeal[j][i] > 0:
+                    found = True
+                    ans.append(j)
+                    break
+                if found:
+                  break
+              return ans
+        
+            def generatePartialExtremal(self, numVars: int):
+              """ We generate ...
+              Parameters
+              ----------
+                  numVars : int
+              Returns
+              -------
+              list
+                  A list of ideals
+              """
+        
+              PosVars = self.allCombinations(0, numVars)
+              lstIdeals = [[PosVars[i] for i in range(len(PosVars)) if sum(PosVars[i]) == j+1] for j in range(numVars)]
+              return lstIdeals
+        
+            """ Ideales extremales """
+            def generateExtremal(self, numVars: int) -> None:
+              """ We generate an extremal ideal
+              Parameters
+              ----------
+                  numVars : int
+                    integer that tells us
+              """
+        
+              self.baseIdeal = [[0]*(2**numVars-1) for _ in range(numVars)]
+        
+              for i in range(1, 2**numVars):
+                for j in range(numVars):
+                  if i&(2**j) > 0:
+                    self.baseIdeal[j][i-1] = 1
+        
+            def allCombinations(self, i: int, numVars: int):
+              """
+              Parameters
+              ----------
+                  i : int
+                  numVars : int
+        
+              Returns
+              -------
+              list
+                  List of all possible combinations
+              """
+        
+              if i == numVars:
+                return [[0]*numVars]
+              lst = []
+              for num in self.allCombinations(i+1, numVars):
+                lst += [num, sumVecs(num,[1 if j == i else 0 for j in range(numVars)])]
+              return lst
+        
+            """ Complejos simpliciales """
+            def generateFi(self, j: int, i: int, s: int, q: int, r: int, curList):
+              """
+              Parameters
+              ----------
+                  j : int
+                  i : int
+                  s : int
+                  q : int
+                  r : int
+                  curList : list
+        
+              Returns
+              -------
+                list
+              """
+        
+              ans = []
+              if j == len(curList) and sum(curList) < r:
+                return []
+              elif j == len(curList):
+                return [curList]
+              newList = list(curList)
+              if j == i:
+                for k in range(min(r-sum(curList), max(r-1, s))):
+                  ans += self.generateFi(j+1, i, s, q, r, newList)
+                  newList[j] += 1
+              else:
+                for k in range(min(r-sum(curList), s)):
+                  ans += self.generateFi(j+1, i, s, q, r, newList)
+                  newList[j] += 1
+              return ans+self.generateFi(j+1, i, s, q, r, newList)
+        
+            def generateSimplicialComplex(self, r: int, q: int, simplify: bool = True):
+              """
+              Parameters
+              ----------
+                  r : int
+                  q : int
+                  simplify : Boolean, optional
+        
+              Returns
+              -------
+              list
+                faces
+              """
+        
+              faces = []
+              self.baseIdeal = []
+              if r == 1 or q == 1:
+                Nq = [[r if i == j else 0 for j in range(q)] for i in range(q)]
+                faces += [Nq]
+                self.baseIdeal = Nq
+              else:
+                s = (r+1)//2
+                #Generamos las Gs
+                G = [[[r if (j == i and j == k) else 0 if i == j else r-1 if i == k else 1 if j == k else 0 for k in range(q)] for i in range(q)] for j in range(q)]
+                self.baseIdeal += sum(G, [])
+                faces += [G]
+                if r > 3 and q >= 2:
+                  F = [self.generateFi(0, i, s, q, r, [0]*q) for i in range(q)]
+                  faces += F
+                  for i in range(q):
+                    self.baseIdeal += F[i]
+                if (r == 3 and q >= 2) or (r == 2 and q > 2):
+                  B = self.generateFi(0, -1, s, q, r, [0]*q)
+                  self.baseIdeal += B
+                  faces += [B]
+        
+                if simplify:
+                  self.getLI()
+                return faces
+        
+            def generateEdgesFaces(self):
+              """
+              Returns
+              -------
+              list, list
+        
+              """
+        
+              N = len(self.baseIdeal)
+              adjMatrix = [[0]*N for i in range(N)]
+              edges, faces = [], []
+              for i in range(N):
+                for j in range(i):
+                  lst = sumVecs(self.baseIdeal[i], [-self.baseIdeal[j][k] for k in range(len(self.baseIdeal[j]))])
+                  if sum(abs(lst[k]) for k in range(len(lst))) == 2:
+                    adjMatrix[i][j], adjMatrix[j][i] = 1, 1
+                    edges.append([i, j])
+        
+              for i in range(N):
+                for j in range(i):
+                  for k in range(j):
+                    if adjMatrix[i][j] > 0 and adjMatrix[i][k] > 0 and adjMatrix[j][k] > 0:
+                      faces.append([i, j, k])
+              return edges, faces
+        
+            """ Simplificaciones de ideales """
+            def getLI(self):
+              """
+              """
+        
+              found = []
+              numVars = len(self.baseIdeal[0])
+              exp = [max([self.baseIdeal[j][i] for j in range(len(self.baseIdeal))])+1 for i in range(numVars)]
+              for i in range(1,numVars):
+                exp[i] = exp[i-1]*exp[i]
+              for i in range(exp[-1]):
+                found += [[0]*len(self.baseIdeal)]
+        
+              found[0] = [1]*len(self.baseIdeal)
+              toRem = []
+              pot = [1]+exp[:numVars-1]
+              dec = [1]+exp
+        
+              for j in range(len(self.baseIdeal)):
+                num = sum(multVecs(pot, self.baseIdeal[j]))
+                if found[num][j] > 0:
+                  toRem.append(j)
+                  continue
+                for i in range(exp[-1]):
+                  enc = [0]*numVars
+                  for k in range(numVars):
+                    enc[k] = (i//dec[k])%(dec[k+1]//dec[k])
+                  nextCoord = [max(self.baseIdeal[j][k], enc[k]) for k in range(numVars)]
+                  to = sum(multVecs(pot, nextCoord))
+        
+                  found[to] = [1 if (found[to][k] == 1 or (found[i][k] == 1 and k != j)) else 0 for k in range(len(self.baseIdeal))]
+        
+              for i in range(len(self.baseIdeal)):
+                if i not in toRem:
+                  num = sum(multVecs(pot, self.baseIdeal[i]))
+                  if found[num][i] == 1:
+                    toRem.append(i)
+        
+              self.baseIdeal = [self.baseIdeal[j] for j in range(len(self.baseIdeal)) if j not in toRem]
+              self.baseIdeal = sorted(self.baseIdeal, key=lambda x: sum(x))
+        
+            def generateSubpruning(self, parts, simplify:bool = False):
+              """
+              Parameters
+              ----------
+                  parts : list
+                    List of integers that contains the index of one ideal
+                  simplify : Boolean, optional
+                    Boolean that
+        
+              Returns
+              -------
+              Ideal, Ideal, Ideal
+                  Three ideals I, J and the intersection of I and J
+              """
+        
+              A = Ideal([self.baseIdeal[j] for j in range(len(self.baseIdeal)) if j+1 in parts])
+              B = Ideal([self.baseIdeal[j] for j in range(len(self.baseIdeal)) if j+1 not in parts])
+              C = A.intersect(B, simplify)
+              return A, B, C
+        
+            def stressSplitting(self, parts, n: int, simplify: bool = False):
+              """
+              Parameters
+              ----------
+                  parts : list
+                    List of integers that contains the index of one ideal
+                  simplify : Boolean, optional
+                    Boolean that
+        
+              Returns
+              -------
+              Ideal, Ideal, list(Ideal)
+                  Three ideals I, J and several intersections of I and J
+              """
+        
+              A = Ideal([self.baseIdeal[j] for j in range(len(self.baseIdeal)) if j+1 in parts])
+              B = Ideal([self.baseIdeal[j] for j in range(len(self.baseIdeal)) if j+1 not in parts])
+        
+              C = [A.intersect(B, simplify, i) for i in range(n)]
+              return A, B, C          </script>
+          <!--Clase Vertice-->
+          <details> <summary class="titulo-desplegable">Documentación de la clase de vértices</summary>
+            <p><code>parse_base</code> es una función que </p>
+            <p><code>generateExtremal</code> es una función que </p>
+          </details>
+         <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">class Vertex:
+          """
+          A class that represents a vertex
+      
+          Attributes
+          ----------
+          coordCube : list
+            A list of lists that represent the coordinates of the vectors that generate this ideal
+          coordBase : list
+          id : int
+          gen : int
+      
+          Methods
+          -------
+          addVec(coordCube, coordBase, id, gen)
+          check(other)
+          checkInv(other)
+          PrintVer(fancy, vars)
+          == (__eq__)
+          """
+      
+          def __init__(self, coordCube: list[int], coordBase: list[int], id: int, gen: int) -> None:
+              """Initializes one instance of the vertex class
+              Parameters
+              ----------
+                coordCube : list
+                  list that indicates the coordinate that this vertex has on the hypercube
+                coordBase : list
+                  list that indicates the exponents of the monomials
+                id : int
+                  integer that indicates to what cube this vertex
+                gen : int
+                  integer that indicates to what part of the pruning this vertex belongs
+              """
+      
+              self.coordCube: list[int] = coordCube
+              self.coordBase: list[int] = coordBase
+              self.id: int = id
+              self.gen: int = gen
+      
+          def addVec(self, x):
+              """ We add x to the node
+              Parameters
+              ----------
+                x : Vertex
+                  other vertex that we add
+      
+              Returns
+              -------
+                Vertex
+      
+              """
+      
+              assert len(self.coordCube) == len(x.coordCube), "addVec: Both vectors should have same length"
+      
+              return Vertex(sumVecs(self.coordCube,x.coordCube), lcm(self.coordBase,x.coordBase), self.id, self.gen | x.gen)
+      
+          def check(self, other) -> bool:
+              """ Checks if the exponents of the monomials is the same between two vertex
+              Parameters
+              ----------
+                  other : Vertex
+      
+              Returns
+              -------
+                  Boolean
+                    True if the monomials are the same and False otherwise
+              """
+      
+              return self.coordBase == other.coordBase
+      
+          def checkInv(self, other) -> bool:
+              """ Checks if the exponents of the monomials differns in 1 between two vertex
+              Parameters
+              ----------
+                  other : Vertex
+      
+              Returns
+              -------
+                  Boolean
+                    True if the monomials differs in 1 and False otherwise
+              """
+      
+              return sum(self.coordBase)+1 == sum(other.coordBase)
+      
+          def __eq__(self, other) -> bool:
+              """
+              Checks if two objects are equal
+              Parameters
+              ----------
+                  other : Vertex
+      
+              Returns
+              -------
+                  Boolean
+                    True if both coordinates are the same and False otherwise
+              """
+      
+              return self.coordBase == other.coordBase and self.coordCube == other.coordCube
+      
+          def PrintVer(self, fancy: bool = True, vars: list[str] = []) -> bool:
+              """ Prints a vertex
+              Parameters
+              ----------
+                  fancy : Boolean, optional
+                    Boolean that tells if we print the coordinates(False) or the monomial(True)
+                  vars : list, optional
+                    List of variables in which we express the "Fancy" output
+              """
+      
+              print(self.coordCube, end=' ')
+              if not fancy:
+                  print(self.coordBase)
+              else:
+                  for j in range(len(vars)):
+                      if self.coordBase[j] > 0:
+                          print(vars[j], end='')
+                          if self.coordBase[j] > 1:
+                              print("^"+str(self.coordBase[j]), end='')
+                  print("", end = ' ')
+      
+              print(self.gen)        </script> 
+         <!--Clase Solver-->
+         <h3>Clase de los cubos</h3>
+         <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">class Cube:
+          """
+          A class that represents a Cube
+      
+          Attributes
+          ----------
+          numVars : int
+            A list of lists that represent the coordinates of the vectors that generate this ideal
+          dimBase : int
+          dirs : list
+          nodes : list
+          gens : list
+          to : list
+          id : int
+      
+          Methods
+          -------
+          setNewStart(newStart)
+          generateCube()
+          print_all_nodes(fancy, vars)
+          """
+      
+          def __init__(self, typeGen = 1, numVars = None, dirs = None, other_cube = None, newStart = None, dimBase = None, id = None, gens = None):
+              if typeGen == 1:
+                  self.numVars = numVars
+                  self.dimBase = dimBase
+                  self.dirs = dirs
+                  self.nodes = []
+                  self.gens = gens
+                  self.to = self.nodes[1:4]
+                  self.generateCube()
+                  self.id = 0
+              else:
+                  self.numVars = other_cube.numVars
+                  self.dimBase = other_cube.dimBase
+                  self.id = id
+                  self.dirs = other_cube.dirs
+                  self.nodes = list(other_cube.nodes)
+                  self.setNewStart(newStart)
+                  self.gens = other_cube.gens
+      
+          def setNewStart(self, newStart):
+              """ For a given cube, we add the respective vector to the position (0,0,0,...)
+              Parameters
+              ----------
+              """
+      
+              for i in range(len(self.nodes)):
+                  self.nodes[i] = self.nodes[i].addVec(newStart)
+                  self.nodes[i].id = self.id
+      
+          def generateCube(self):
+              """  We generate the first cube
+              Parameters
+              ----------
+              """
+      
+              for i in range(2):
+                  for j in range(2):
+                      for k in range(2):
+                          coord = [0]*self.dimBase
+                          coord[0], coord[1], coord[2] = i,j,k
+                          coord2 = [0]*self.numVars
+                          cur_gen = 0
+                          if i > 0:
+                              coord2 = lcm(coord2, self.dirs[0])
+                              cur_gen |= self.gens[0]
+                          if j > 0:
+                              coord2 = lcm(coord2, self.dirs[1])
+                              cur_gen |= self.gens[1]
+                          if k > 0:
+                              coord2 = lcm(coord2, self.dirs[2])
+                              cur_gen |= self.gens[2]
+                          self.nodes.append(Vertex(coord, coord2, 0, cur_gen))
+      
+          def print_all_nodes(self, fancy = True, vars = []):
+              """ We print all the nodes in a cube
+              Parameters
+              ----------
+              """
+      
+              for i in range(len(self.nodes)):
+                  self.nodes[i].PrintVer(fancy, vars)
+      
+              </script>
+        <!--Clase Scarf-->
+        <h3>Clase de los algoritmos de poda</h3>
+        <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">class Solver:
+          """
+          A class that represents a Solver
+      
+          Attributes
+          ----------
+          numVars : int
+            A list of lists that represent the coordinates of the vectors that generate this ideal
+          variables : list
+          base : list
+          dimBase : int
+          cubes : list
+          totalNodes : list
+          Resolution : list
+          typeSolver : int
+          solverA : Solver
+          solverB : Solver
+          solverC : Solver
+          gens : list
+      
+          Methods
+          -------
+          checkEdges(step, invariant)
+          PruningAlgorithm(printLogs, invariant)
+          printAllCubes(fancy)
+          collectResolution()
+          getResolution()
+          BettiTable(ret, PrintBet, PrintInd)
+          printBettiTableSeparado()
+          printResolution()
+          partialResolution(part1, simplify, printGenerators, printIndLogs)
+          """
+      
+          def __init__(self, base_ideals, variables: list[str] = [], typeSolver: int = 1, idx: list[int] = []):
+            if variables == []:
+              variables = ["x"+str(i) for i in range(len(base_ideals[0]))]
+            self.numVars: int = len(variables)
+            self.variables: list[str] = variables
+            self.base: list[int]
+            if type(base_ideals[0]) == str:
+              self.base = parse_base(base_ideals, variables)
+            else:
+              self.base = base_ideals
+      
+            self.dimBase: int = len(base_ideals)
+            self.cubes = []
+            self.totalNodes = []
+            self.Resolution = None
+            self.solverA = None
+            self.solverB = None
+            self.solverC = None
+            self.typeSolver: int = typeSolver
+      
+            if self.dimBase == 1:
+              self.dimBase = 2
+              self.base.append(self.base[0])
+      
+            if self.dimBase == 2:
+              self.dimBase = 3
+              self.base.append(self.base[0])
+      
+            if typeSolver == 1:
+              self.gens = [0]*self.dimBase
+            else:
+              self.gens = [1 if i+1 in idx else 2 for i in range(self.dimBase)]
+      
+          def checkEdges(self, step, invariant: bool = False, validVertex: list[int] = []):
+            """ Check
+              Parameters
+              ----------
+      
+              Returns
+              -------
+            """
+      
+            toErase = []
+            pairsErased = []
+            for it in range(step):
+              newDir = Vertex([1 if i == it else 0 for i in range(self.dimBase)], self.base[it], -1, self.gens[it])
+              for j in range(len(self.totalNodes)):
+                nextNode = self.totalNodes[j].addVec(newDir)
+                curNode = self.totalNodes[j]
+                pos = -1
+                if nextNode in self.totalNodes:
+                  pos = self.totalNodes.index(nextNode)
+                if pos != -1:
+                  nextNode = self.totalNodes[pos]
+      
+                curNum = sum([2**k for k in range(self.dimBase) if curNode.coordCube[k] == 1])
+                nextNum = sum([2**k for k in range(self.dimBase) if nextNode.coordCube[k] == 1])
+      
+                if validVertex != [] and validVertex[curNum] == 0:
+                  toErase.append(curNode)
+                  continue
+                if validVertex != [] and validVertex[nextNum] == 0:
+                  toErase.append(nextNode)
+                  continue
+      
+                if curNode not in toErase and nextNode not in toErase and nextNode in self.totalNodes and (curNode.check(nextNode) or (invariant and curNode.checkInv(nextNode))) and curNode.gen == nextNode.gen:
+                  toErase.append(nextNode)
+                  toErase.append(curNode)
+                  pairsErased.append([curNode, nextNode])
+      
+            for node in toErase:
+              self.totalNodes.remove(node)
+              self.cubes[node.id].nodes.remove(node)
+      
+            return pairsErased
+      
+          def PruningAlgorithm(self, printLogs: bool = False, invariant: bool = False, validVertex: list[int] = []):
+              """ Check
+              Parameters
+              ----------
+              """
+      
+              #Creamos cubo original
+              self.cubes.append(Cube(typeGen=1, numVars=self.numVars, dirs=self.base[0:3], dimBase=self.dimBase, gens=self.gens[0:3]))
+              self.totalNodes += self.cubes[0].nodes
+              stepErased = self.checkEdges(3, False)
+              if printLogs:
+                print("Step 1: We erase these pairs")
+                for p in stepErased:
+                  p[0].PrintVer(fancy=True, vars=self.variables)
+                  p[1].PrintVer(fancy=True, vars=self.variables)
+                  print("---")
+              #Hacemos copia
+              for it in range(3, self.dimBase):
+                  newGen = self.gens[it]
+                  newDir = Vertex([1 if i == it else 0 for i in range(self.dimBase)], self.base[it], -1, newGen)
+                  new_cubes = []
+                  for i in range(len(self.cubes)):
+                      new_cubes.append(Cube(typeGen=2, other_cube=self.cubes[i], newStart=newDir, id=i+len(self.cubes)))
+                      self.totalNodes += new_cubes[i].nodes
+                  self.cubes.extend(new_cubes) #Creamos copia
+                  stepErased = self.checkEdges(it+1, False)
+                  if printLogs:
+                    print("Step "+str(it-1)+": We erase these pairs")
+                    for p in stepErased:
+                      p[0].PrintVer(fancy=True, vars=self.variables)
+                      p[1].PrintVer(fancy=True, vars=self.variables)
+                      print("---")
+      
+                  if invariant:
+                    stepErased = self.checkEdges(self.dimBase, True)
+                    if printLogs:
+                      print("Step "+str(it-1)+": We erase these pairs")
+                      for p in stepErased:
+                        p[0].PrintVer(fancy=True, vars=self.variables)
+                        p[1].PrintVer(fancy=True, vars=self.variables)
+                        print("---")
+      
+          def printAllCubes(self, fancy: bool = True) -> None:
+              """ Check
+              Parameters
+              ----------
+              """
+      
+              for it in range(len(self.cubes)):
+                  print("This is cube number: "+str(it+1))
+                  self.cubes[it].print_all_nodes(fancy, self.variables)
+      
+          def collectResolution(self) -> None:
+            """ Check
+            Parameters
+            ----------
+            """
+      
+            cnt = [[] for _ in range(self.dimBase+1)]
+            for ver in self.totalNodes:
+                ind = sum(ver.coordCube)
+                cnt[ind].append(ver)
+            self.Resolution = cnt
+            while [] in cnt:
+              cnt.remove([])
+      
+          def getResolution(self):
+            """ Check
+            Parameters
+            ----------
+      
+            Returns
+            -------
+            """
+      
+            if self.Resolution is None:
+              self.collectResolution
+            return self.Resolution
+      
+          def BettiTable(self, ret: bool = False, printBet: bool = True, printInd: bool = False):
+            """ Check
+            Parameters
+            ----------
+      
+            Returns
+            -------
+            """
+      
+            if self.typeSolver == 3:
+              BettiA = self.solverA.BettiTable(ret=True, printBet=printInd)
+              BettiB = self.solverB.BettiTable(ret=True, printBet=printInd)
+              BettiC = self.solverC.BettiTable(ret=True, printBet=printInd)
+              mxDeg = max(len(BettiA), len(BettiB), len(BettiC)-1)
+              width = max(len(BettiA[0]), len(BettiB[0]), len(BettiC[0])+1)
+              BettiTable = [[0]*width for _ in range(mxDeg)]
+      
+              for i in range(mxDeg):
+                for j in range(width):
+                  if i < len(BettiA) and j < len(BettiA[0]):
+                    BettiTable[i][j] += BettiA[i][j]
+                  if i < len(BettiB) and j < len(BettiB[0]):
+                    BettiTable[i][j] += BettiB[i][j]
+                  if i+1 < len(BettiC) and j > 0 and j-1 < len(BettiC[0]):
+                    BettiTable[i][j] += BettiC[i+1][j-1]
+              BettiTable[0][0] = 1
+              if printBet:
+                print("Total Betti table:")
+                for i in range(mxDeg):
+                  for j in range(width):
+                    print('{0:<4}'.format(BettiTable[i][j] if BettiTable[i][j] != 0 else '.'), end = '')
+                  print("")
+              if ret:
+                return BettiTable
+            else:
+              if self.Resolution is None:
+                self.collectResolution()
+      
+              mxDeg = max([1+sum(v.coordBase)-sum(v.coordCube) for v in self.totalNodes])
+              width = max([sum(v.coordCube) for v in self.totalNodes])+1
+      
+              BettiTable = [[0]*width for _ in range(mxDeg)]
+              for i in range(width):
+                for j in range(len(self.Resolution[i])):
+                  BettiTable[sum(self.Resolution[i][j].coordBase)-sum(self.Resolution[i][j].coordCube)][sum(self.Resolution[i][j].coordCube)] += 1
+      
+              if printBet:
+                print("Betti table:")
+                for i in range(mxDeg):
+                  for j in range(width):
+                    print('{0:<4}'.format(BettiTable[i][j] if BettiTable[i][j] != 0 else '.'), end = '')
+                  print("")
+              if ret:
+                return BettiTable
+      
+          def printBettiTableSeparado(self) -> None:
+            """ Check
+            Parameters
+            ----------
+            """
+      
+            assert self.typeSolver == 2, "printBettiTableSeparado: Option only available for Solver number 2"
+            if self.Resolution is None:
+              self.collectResolution()
+            mxDeg = max([1+sum(v.coordBase)-sum(v.coordCube) for v in self.totalNodes])
+            width = max([sum(v.coordCube) for v in self.totalNodes])+1
+      
+            for k in range(1, 4):
+              BettiTable = [[0]*width for _ in range(mxDeg)]
+      
+              for i in range(width):
+                for j in range(len(self.Resolution[i])):
+                  if self.Resolution[i][j].gen == k:
+                    BettiTable[sum(self.Resolution[i][j].coordBase)-sum(self.Resolution[i][j].coordCube)][sum(self.Resolution[i][j].coordCube)] += 1
+              print("Betti table "+str(k)+":")
+              for i in range(mxDeg):
+                  for j in range(width):
+                    print('{0:<4}'.format(BettiTable[i][j] if BettiTable[i][j] != 0 else '.'), end = '')
+                  print("")
+      
+          def printResolution(self) -> None:
+            """ Check
+            Parameters
+            ----------
+            """
+      
+            if self.typeSolver == 3:
+              print("Resolution for first ideal A")
+              self.solverA.printResolution()
+              print("Resolution for second ideal B")
+              self.solverB.printResolution()
+              print("Resolution for intersection")
+              self.solverC.printResolution()
+            else:
+              if self.Resolution is None:
+                self.collectResolution()
+              for i in range(len(self.Resolution)):
+                  if i > 0 and len(self.Resolution[i-1]) == 0 and len(self.Resolution[i]) == 0:
+                    continue
+                  print("List for " + str(i))
+                  print("Betti number: "+ str(len(self.Resolution[i])))
+                  for ver in self.Resolution[i]:
+                      ver.PrintVer(True, self.variables)
+      
+          def partialResolution(self, part1, simplify: bool = True, printGenerators: bool = False, printIndLogs: bool = False) -> None:
+            I = Ideal(self.base)
+            A, B, C = I.generateSubpruning(part1, simplify)
+            if printGenerators:
+              PrintList(A.baseIdeal, self.variables)
+              PrintList(B.baseIdeal, self.variables)
+              PrintList(C.baseIdeal, self.variables)
+            solver1 = Solver(A.baseIdeal, self.variables)
+            solver1.PruningAlgorithm(printLogs = printIndLogs)
+            solver2 = Solver(B.baseIdeal, self.variables)
+            solver2.PruningAlgorithm(printLogs = printIndLogs)
+            solver3 = Solver(C.baseIdeal, self.variables)
+            solver3.PruningAlgorithm(printLogs = printIndLogs)
+            self.solverA = solver1
+            self.solverB = solver2
+            self.solverC = solver3
+      
+          def pruneWithFaces(self, faces, printLogs: bool = False):
+            """
+            for i in range(self.dimBase):
+              monomial = Vertex([1 if i == k else 0 for k in range(self.dimBase)], self.base[i], 0, 0)
+              okNodes = []
+              for j in range(len(self.totalNodes)):
+                target = [k for k in range(self.dimBase) if self.totalNodes[j].coordCube[k] == 1] + [i]
+      
+                ok: bool = False
+                for k in range(len(faces)):     #optimizar con precalculos
+                  if not [1 for x in target if x not in faces[k]]:
+                    ok = True
+                    break
+      
+                if ok:
+                  okNodes.append(self.totalNodes[j].addVec(monomial))
+      
+              self.totalNodes += okNodes
+            """
+      
+            validVertex = [0]*(2**self.dimBase)
+            for i in range(len(faces)):
+              target = sum([2**x for x in faces[i]])
+              validVertex[target] = 1
+      
+            for i in range(2**self.dimBase-1, 0, -1):
+              for j in range(self.dimBase):
+                if i&(2**j) > 0:
+                  validVertex[i-2**j] |= validVertex[i]
+      
+            return validVertex
+      
+      
+      
+              </script>
+        <!--Clase Lyubeznik-->
+        <h3>Clase del algoritmo de resolución de Lyubeznik</h3>
+        <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">class Lyubeznik:
+          """
+          A class that represents a Solver
+      
+          Attributes
+          ----------
+          numVars : int
+            A list of lists that represent the coordinates of the vectors that generate this ideal
+          variables : list
+          base : list
+          dimBase : int
+          cubes : list
+          totalNodes : list
+          Resolution : list
+          typeSolver : int
+          solverA : Solver
+          solverB : Solver
+          solverC : Solver
+          gens : list
+      
+          Methods
+          -------
+          checkEdges(step, invariant)
+          PruningAlgorithm(printLogs, invariant)
+          printAllCubes(fancy)
+          collectResolution()
+          getResolution()
+          BettiTable(ret, PrintBet, PrintInd)
+          printBettiTableSeparado()
+          printResolution()
+          partialResolution(part1, simplify, printGenerators, printIndLogs)
+          """
+      
+          def __init__(self, base_ideals, variables, typeSolver = 1, idx = []):
+            self.numVars = len(variables)
+            self.variables = variables
+      
+            if type(base_ideals[0]) == str:
+              self.base = parse_base(base_ideals, variables)
+            else:
+              self.base = base_ideals
+      
+            self.dimBase = len(base_ideals)
+            self.cubes = []
+            self.totalNodes = []
+            self.Resolution = None
+            self.solverA = None
+            self.solverB = None
+            self.solverC = None
+            self.typeSolver = typeSolver
+      
+            if self.dimBase == 1:
+              self.dimBase = 2
+              self.base.append(self.base[0])
+            if self.dimBase == 2:
+              self.dimBase = 3
+              self.base.append(self.base[0])
+      
+            if typeSolver == 1:
+              self.gens = [0]*self.dimBase
+            else:
+              self.gens = [1 if i+1 in idx else 2 for i in range(self.dimBase)]
+      
+          def checkEdges(self, step, invariant = False):
+            """ Check
+              Parameters
+              ----------
+      
+              Returns
+              -------
+            """
+      
+            toErase = []
+            pairsErased = []
+            for it in range(step):
+              newDir = Vertex([1 if i == it else 0 for i in range(self.dimBase)], self.base[it], -1, self.gens[it])
+              for j in range(len(self.totalNodes)):
+                if sum(self.totalNodes[j].coordCube[:it]) > 0:   #Condicion Lyubeznik
+                  continue
+      
+                nextNode = self.totalNodes[j].addVec(newDir)
+                curNode = self.totalNodes[j]
+                pos = -1
+      
+                if nextNode in self.totalNodes:
+                  pos = self.totalNodes.index(nextNode)
+                if pos != -1:
+                  nextNode = self.totalNodes[pos]
+      
+                if curNode not in toErase and nextNode not in toErase and nextNode in self.totalNodes and curNode.check(nextNode) and curNode.gen == nextNode.gen:
+                  toErase.append(nextNode)
+                  toErase.append(curNode)
+                  pairsErased.append([curNode, nextNode])
+      
+            for node in toErase:
+              self.totalNodes.remove(node)
+              self.cubes[node.id].nodes.remove(node)
+      
+            return pairsErased
+      
+          def PruningAlgorithm(self, printLogs = False, invariant = False):
+              """ Check
+              Parameters
+              ----------
+              """
+      
+              #Creamos cubo original
+              self.cubes.append(Cube(typeGen=1, numVars=self.numVars, dirs=self.base[0:3], dimBase=self.dimBase, gens=self.gens[0:3]))
+              self.totalNodes += self.cubes[0].nodes
+              stepErased = self.checkEdges(3, False)
+              if printLogs:
+                print("Step 1: We erase these pairs")
+                for p in stepErased:
+                  p[0].PrintVer(fancy=True, vars=self.variables)
+                  p[1].PrintVer(fancy=True, vars=self.variables)
+                  print("---")
+              #Hacemos copia
+              for it in range(3, self.dimBase):
+                  newGen = self.gens[it]
+                  newDir = Vertex([1 if i == it else 0 for i in range(self.dimBase)], self.base[it], -1, newGen)
+                  new_cubes = []
+                  for i in range(len(self.cubes)):
+                      new_cubes.append(Cube(typeGen=2, other_cube=self.cubes[i], newStart=newDir, id=i+len(self.cubes)))
+                      self.totalNodes += new_cubes[i].nodes
+                  self.cubes.extend(new_cubes) #Creamos copia
+                  stepErased = self.checkEdges(it+1, False)
+                  if printLogs:
+                    print("Step "+str(it-1)+": We erase these pairs")
+                    for p in stepErased:
+                      p[0].PrintVer(fancy=True, vars=self.variables)
+                      p[1].PrintVer(fancy=True, vars=self.variables)
+                      print("---")
+      
+          def printAllCubes(self, fancy = True):
+              """ Check
+              Parameters
+              ----------
+              """
+      
+              for it in range(len(self.cubes)):
+                  print("This is cube number: "+str(it+1))
+                  self.cubes[it].print_all_nodes(fancy, self.variables)
+      
+          def collectResolution(self):
+            """ Check
+            Parameters
+            ----------
+            """
+      
+            cnt = [[] for _ in range(self.dimBase+1)]
+            for ver in self.totalNodes:
+                ind = sum(ver.coordCube)
+                cnt[ind].append(ver)
+            self.Resolution = cnt
+            while [] in cnt:
+              cnt.remove([])
+      
+          def getResolution(self):
+            """ Check
+            Parameters
+            ----------
+      
+            Returns
+            -------
+            """
+      
+            if self.Resolution is None:
+              self.collectResolution
+            return self.Resolution
+      
+          def BettiTable(self, ret = False, printBet = True, printInd = False):
+            """ Check
+            Parameters
+            ----------
+      
+            Returns
+            -------
+            """
+      
+            if self.typeSolver == 3:
+              BettiA = self.solverA.BettiTable(ret=True, printBet=printInd)
+              BettiB = self.solverB.BettiTable(ret=True, printBet=printInd)
+              BettiC = self.solverC.BettiTable(ret=True, printBet=printInd)
+              mxDeg = max(len(BettiA), len(BettiB), len(BettiC)-1)
+              width = max(len(BettiA[0]), len(BettiB[0]), len(BettiC[0])+1)
+              BettiTable = []
+              for i in range(mxDeg):
+                BettiTable.append([0]*width)
+              for i in range(mxDeg):
+                for j in range(width):
+                  if i < len(BettiA) and j < len(BettiA[0]):
+                    BettiTable[i][j] += BettiA[i][j]
+                  if i < len(BettiB) and j < len(BettiB[0]):
+                    BettiTable[i][j] += BettiB[i][j]
+                  if i < len(BettiC)-1 and j > 0:
+                    BettiTable[i][j] += BettiC[i+1][j-1]
+              BettiTable[0][0] = 1
+              if printBet:
+                print("Total Betti table:")
+                for i in range(mxDeg):
+                  print(BettiTable[i])
+              if ret:
+                return BettiTable
+            else:
+              if self.Resolution is None:
+                self.collectResolution()
+              mxDeg = max([1+sum(v.coordBase)-sum(v.coordCube) for v in self.totalNodes])
+              width = max([sum(v.coordCube) for v in self.totalNodes])+1
+      
+              BettiTable = []
+              for i in range(mxDeg):
+                BettiTable.append([0]*width)
+              for i in range(width):
+                for j in range(len(self.Resolution[i])):
+                  BettiTable[sum(self.Resolution[i][j].coordBase)-sum(self.Resolution[i][j].coordCube)][sum(self.Resolution[i][j].coordCube)] += 1
+              if printBet:
+                print("Betti table:")
+                for j in range(mxDeg):
+                  print(BettiTable[j])
+              if ret:
+                return BettiTable
+      
+          def printBettiTableSeparado(self):
+            """ Check
+            Parameters
+            ----------
+            """
+      
+            assert self.typeSolver == 2, "printBettiTableSeparado: Option only available for Solver number 2"
+            if self.Resolution is None:
+              self.collectResolution()
+            mxDeg = max([1+sum(v.coordBase)-sum(v.coordCube) for v in self.totalNodes])
+            width = max([sum(v.coordCube) for v in self.totalNodes])+1
+      
+            for k in range(1, 4):
+              BettiTable = []
+              for i in range(mxDeg):
+                BettiTable.append([0]*width)
+      
+              for i in range(width):
+                for j in range(len(self.Resolution[i])):
+                  if self.Resolution[i][j].gen == k:
+                    BettiTable[sum(self.Resolution[i][j].coordBase)-sum(self.Resolution[i][j].coordCube)][sum(self.Resolution[i][j].coordCube)] += 1
+              print("Betti table "+str(k)+":")
+              for j in range(mxDeg):
+                print(BettiTable[j])
+      
+          def printResolution(self):
+            """ Check
+            Parameters
+            ----------
+            """
+      
+            if self.typeSolver == 3:
+              print("Resolution for first ideal A")
+              self.solverA.printResolution()
+              print("Resolution for second ideal B")
+              self.solverB.printResolution()
+              print("Resolution for intersection")
+              self.solverC.printResolution()
+            else:
+              if self.Resolution is None:
+                self.collectResolution()
+              for i in range(len(self.Resolution)):
+                  if i > 0 and len(self.Resolution[i-1]) == 0 and len(self.Resolution[i]) == 0:
+                    continue
+                  print("List for " + str(i))
+                  print("Betti number: "+ str(len(self.Resolution[i])))
+                  for ver in self.Resolution[i]:
+                      ver.PrintVer(True, self.variables)
+      
+          def partialResolution(self, part1, simplify = False, printGenerators = False, printIndLogs = False):
+            I = Ideal(self.base)
+            A, B, C = I.generateSubpruning(part1, simplify)
+            if printGenerators:
+              PrintList(A.baseIdeal, self.variables)
+              PrintList(B.baseIdeal, self.variables)
+              PrintList(C.baseIdeal, self.variables)
+            solver1 = Solver(A.baseIdeal, self.variables)
+            solver1.PruningAlgorithm(printLogs = printIndLogs)
+            solver2 = Solver(B.baseIdeal, self.variables)
+            solver2.PruningAlgorithm(printLogs = printIndLogs)
+            solver3 = Solver(C.baseIdeal, self.variables)
+            solver3.PruningAlgorithm(printLogs = printIndLogs)
+            self.solverA = solver1
+            self.solverB = solver2
+            self.solverC = solver3        </script>
+        <h3>Ejemplos:</h3>
+        <h4>Generación de complejo simplicial</h4>
+=======
+  for x in lst:
+    PrintNum(x, True, vars, False)
+    print("", end = ' ')
+  print()
+          </script>
+          <!--Clase ideal-->
+          <h3>Clase de los ideales</h3>
+          <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">
+            class Ideal:
+    """
+    Parameters:
+        baseIdeal - list that generates this ideal
+    Returns:
+        None
+    """
+    def __init__(self, baseIdeal = []):
+      self.baseIdeal = baseIdeal
+
+    """
+    Parameters:
+        exponent - integer to which we elevate this ideal
+    Returns:
+        None
+    """
+    def exp(self, exponent):
+      if exponent == 1:
+        return self.baseIdeal
+      cur = self.exp(exponent//2)
+      cur = [sumVecs(cur[i], cur[j]) for i in range(len(cur)) for j in range(i, len(cur))]
+      if exponent&1:
+        cur = [sumVecs(i, j) for i in cur for j in self.baseIdeal]
+      return cur
+
+    """
+    Parameters:
+        idealB   - ideal with which we intersect this ideal 
+        simplify - boolean True if we keep only the minimal generator and False otherwise
+    Returns:
+        Ideal corresponding to the intersection of this ideal and idealB
+    """
+    def intersect(self, idealB, simplify = False):
+      ans = Ideal([lcm(x, y) for x in self.baseIdeal for y in idealB.baseIdeal])
+      if simplify:
+        ans.getLI()
+      return ans
+
+    """
+    Parameters:
+    Returns:
+      Set of all index that contain a particular variable
+    """
+    def getPartition(self):
+      assert self.baseIdeal != [], "getPartition: Ideal cannot be empty"
+      ans = []
+      for i in len(self.baseIdeal[0]):
+        found = False
+        for j in range(len(self.baseIdeal)):
+          if self.baseIdeal[j][i] > 0:
+            found = True
+            ans.append(j)
+            break
+        if found:
+          break
+      return ans
+
+    """ Ideales extremales """
+    """
+    Parameters:
+        numVars - integer that tells us
+    Returns:
+        None
+    """
+    def generateExtremal(self, numVars):
+      self.baseIdeal = []
+      for i in range(numVars):
+        self.baseIdeal.append([0]*(2**numVars-1))
+      for i in range(1, 2**numVars):
+        for j in range(numVars):
+          if i&(2**j) > 0:
+            self.baseIdeal[j][i-1] = 1
+
+    """
+    Parameters:
+        i       - 
+        numVars - 
+    Returns:
+        List of all possible combinations
+    """
+    def allCombinations(self, i, numVars):
+      if i == numVars:
+        return [[0]*numVars]
+      lst = []
+      for num in self.allCombinations(i+1, numVars):
+        lst += [num, sumVecs(num,[1 if j == i else 0 for j in range(numVars)])]
+      return lst
+
+    """
+    Parameters:
+        numVars - 
+    Returns:
+        A list of ideals
+    """
+    def generatePartialExtremal(self, numVars):
+      PosVars = self.allCombinations(0, numVars)
+      lstIdeals = [[PosVars[i] for i in range(len(PosVars)) if sum(PosVars[i]) == j+1] for j in range(numVars)]
+      return lstIdeals
+
+    """ Complejos simpliciales """
+    """
+    Parameters:
+        j       - 
+        i       - 
+        s       - 
+        q       - 
+        r       - 
+        curList - 
+    Returns:
+    """
+    def generateFi(self, j, i, s, q, r, curList):
+      ans = []
+      if j == len(curList) and sum(curList) < r:
+        return []
+      elif j == len(curList):
+        return [curList]
+      newList = list(curList)
+      if j == i:
+        for k in range(min(r-sum(curList), max(r-1, s))):
+          ans += self.generateFi(j+1, i, s, q, r, newList)
+          newList[j] += 1
+      else:
+        for k in range(min(r-sum(curList), s)):
+          ans += self.generateFi(j+1, i, s, q, r, newList)
+          newList[j] += 1
+      return ans+self.generateFi(j+1, i, s, q, r, newList)
+
+    """
+    Parameters:
+        r        - 
+        q        - 
+        simplify - 
+    Returns:
+    """
+    def generateSimplicialComplex(self, r, q, simplify = False):
+      faces = []
+      self.baseIdeal = []
+      if r == 1 or q == 1:
+        Nq = [[r if i == j else 0 for j in range(q)] for i in range(q)]
+        faces += [Nq]
+        self.baseIdeal = Nq
+      else:
+        s = (r+1)//2
+        #Generamos las Gs
+        G = [[[r if (j == i and j == k) else 0 if i == j else r-1 if i == k else 1 if j == k else 0 for k in range(q)] for i in range(q)] for j in range(q)]
+        self.baseIdeal += sum(G, [])
+        faces += [G]
+        if r > 3 and q >= 2:
+          F = [self.generateFi(0, i, s, q, r, [0]*q) for i in range(q)]
+          faces += F
+          for i in range(q):
+            self.baseIdeal += F[i]
+        if (r == 3 and q >= 2) or (r == 2 and q > 2):
+          B = self.generateFi(0, -1, s, q, r, [0]*q)
+          self.baseIdeal += B
+          faces += [B]
+
+        if simplify:
+          self.getLI()
+        return faces
+
+    """
+    Parameters:
+    Returns:
+    """
+    def generateEdgesFaces(self):
+      N = len(self.baseIdeal)
+      adjMatrix = [[0]*N for i in range(N)]
+      edges, faces = [], []
+      for i in range(N):
+        for j in range(i):
+          lst = sumVecs(self.baseIdeal[i], [-self.baseIdeal[j][k] for k in range(len(self.baseIdeal[j]))])
+          if sum(abs(lst[k]) for k in range(len(lst))) == 2:
+            adjMatrix[i][j], adjMatrix[j][i] = 1, 1
+            edges.append([i, j])
+
+      for i in range(N):
+        for j in range(i):
+          for k in range(j):
+            if adjMatrix[i][j] > 0 and adjMatrix[i][k] > 0 and adjMatrix[j][k] > 0:
+              faces.append([i, j, k])
+      return edges, faces
+
+    """ Simplificaciones de ideales """
+    """
+    Parameters:
+      None
+    Returns:
+    """
+    def getLIsquarefree(self):
+      found = []
+      numVars = len(self.baseIdeal[0])
+      for i in range(2**numVars):
+        found += [[0]*len(self.baseIdeal)]
+      found[0] = [1]*len(self.baseIdeal)
+      toRem = []
+      pot2 = [2**i for i in range(numVars)]
+      for j in range(len(self.baseIdeal)):
+        num = sum(multVecs(pot2, self.baseIdeal[j]))
+        if found[num][j] > 0:
+          toRem.append(j)
+          continue
+        for i in range(2**numVars):
+          to = num|i
+          found[to] = [1 if (found[to][k] == 1 or (found[i][k] == 1 and k != j)) else 0 for k in range(len(self.baseIdeal))]
+
+      for i in range(len(self.baseIdeal)):
+        if i not in toRem:
+          num = sum(multVecs(pot2, self.baseIdeal[i]))
+          if found[num][i] == 1:
+            toRem.append(i)
+
+      self.baseIdeal = [self.baseIdeal[j] for j in range(len(self.baseIdeal)) if j not in toRem]
+
+    """
+    Parameters:
+      None
+    Returns:
+    """
+    def getLI(self):
+      numVars = len(self.baseIdeal[0])
+      rem = []
+      found = []
+      if max(max(self.baseIdeal[i]) for i in range(len(self.baseIdeal))) < 2:
+        self.getLIsquarefree()
+      else:
+        pass
+      """
+      found = [[0]*len(self.baseIdeal[0])]
+      id = [[0]*len(self.baseIdeal)]
+      rem = []
+      for i in range(len(self.baseIdeal)):
+        #print(i)
+        if self.baseIdeal[i] in found:
+          rem.append(self.baseIdeal[i])
+        else:
+          new_found = [lcm(x, self.baseIdeal[i]) for x in found]
+          new_id = [sumVecs(x, [1 if i == j else 0 for j in range(len(self.baseIdeal))]) for x in id]
+          for j in range(i):
+            if self.baseIdeal[j] in new_found and self.baseIdeal[j] not in rem:
+              for k in range(len(new_found)):
+                if new_found[k] == self.baseIdeal[j] and new_id[k][j] == 0:
+                  rem.append(self.baseIdeal[j])
+                  break
+          found += new_found
+          id += new_id
+      for j in rem:
+        self.baseIdeal.remove(j)
+      """
+      self.baseIdeal = sorted(self.baseIdeal, key=lambda x: -sum(x))
+
+    """
+    Parameters:
+        parts    - 
+        simplify - 
+    Returns:
+        Three ideals I, J and the intersection of I and J
+    """
+    def generate_subpruning(self, parts, simplify = False):
+      A = Ideal([self.baseIdeal[j] for j in range(len(self.baseIdeal)) if j+1 in parts])
+      B = Ideal([self.baseIdeal[j] for j in range(len(self.baseIdeal)) if j+1 not in parts])
+      C = A.intersect(B, simplify)
+      return A, B, C
+          </script>
+          <!--Clase Vertice-->
+          <h3>Clase de los vértices</h3>
+         <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">
+            class Vertex:
+    def __init__(self, coordCube, coordBase, id, gen):
+        self.coordCube = coordCube
+        self.coordBase = coordBase
+        self.id = id
+        self.gen = gen
+    """
+    We add x to the node
+    """
+    def addVec(self, x):
+        assert len(self.coordCube) == len(x.coordCube), "addVec: Both vectors should have same length"
+
+        return Vertex(sumVecs(self.coordCube,x.coordCube), lcm(self.coordBase,x.coordBase), self.id, self.gen | x.gen)
+    """
+    Checks if the Lowest Common Multiple is the same between two nodes
+    Parameters:
+        other - Vertex
+    """
+    def check(self, other) -> bool:
+        return self.coordBase == other.coordBase
+    """
+    Checks if two objects are equal
+    Parameters:
+        other - Vertex
+    """
+    def __eq__(self, other) -> bool:
+        return self.coordBase == other.coordBase and self.coordCube == other.coordCube
+    """
+    Checks if the Lowest Common Multiple is the same between two nodes
+    Parameters:
+        other - Vertex
+    """
+    def PrintVer(self, fancy = True, vars = []) -> bool:
+        print(self.coordCube, end=' ')
+        if not fancy:
+            print(self.coordBase)
+        else:
+            for j in range(len(vars)):
+                if self.coordBase[j] > 0:
+                    print(vars[j], end='')
+                    if self.coordBase[j] > 1:
+                        print("^"+str(self.coordBase[j]), end='')
+            print("", end = ' ')
+
+        print(self.gen)
+         </script> 
+         <!--Clase Solver-->
+         <h3>Clase de los cubos</h3>
+         <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">
+            class Solver:
+    def __init__(self, base_ideals, variables, typeSolver = 1, idx = [], invariant = False):
+      self.numVars = len(variables)
+      self.variables = variables
+      if type(base_ideals[0]) == str:
+        self.base = parse_base(base_ideals, variables)
+      else:
+        self.base = base_ideals
+      self.dimBase = len(base_ideals)
+      self.cubes = []
+      self.totalNodes = []
+      self.Resolution = None
+      self.solverA = None
+      self.solverB = None
+      self.solverC = None
+      self.invariant = invariant
+      self.typeSolver = typeSolver
+      if self.dimBase == 1:
+        self.dimBase = 2
+        self.base.append(self.base[0])
+      if self.dimBase == 2:
+        self.dimBase = 3
+        self.base.append(self.base[0])
+      if typeSolver == 1:
+        self.gens = [0]*self.dimBase
+      else:
+        self.gens = [1 if i+1 in idx else 2 for i in range(self.dimBase)]
+
+    def checkEdges(self, step):
+      toErase = []
+      pairsErased = []
+      for it in range(step):
+        newDir = Vertex([1 if i == it else 0 for i in range(self.dimBase)], self.base[it], -1, self.gens[it])
+        for j in range(len(self.totalNodes)):
+          nextNode = self.totalNodes[j].addVec(newDir)
+
+          pos = -1
+          if nextNode in self.totalNodes:
+            pos = self.totalNodes.index(nextNode)
+          if pos != -1:
+            nextNode = self.totalNodes[pos]
+
+          if self.totalNodes[j] not in toErase and nextNode not in toErase and nextNode in self.totalNodes and self.totalNodes[j].check(nextNode) and self.totalNodes[j].gen == nextNode.gen:
+            toErase.append(nextNode)
+            toErase.append(self.totalNodes[j])
+            pairsErased.append([self.totalNodes[j], nextNode])
+
+      for node in toErase:
+        self.totalNodes.remove(node)
+        self.cubes[node.id].nodes.remove(node)
+
+      return pairsErased
+
+    def PruningAlgorithm(self, printLogs = False):
+        #Creamos cubo original
+        self.cubes.append(Cube(typeGen=1, numVars=self.numVars, dirs=self.base[0:3], dimBase=self.dimBase, gens=self.gens[0:3]))
+        self.totalNodes += self.cubes[0].nodes
+        stepErased = self.checkEdges(3)
+        if printLogs:
+          print("Step 1: We erase these pairs")
+          for p in stepErased:
+            p[0].PrintVer(fancy=True, vars=self.variables)
+            p[1].PrintVer(fancy=True, vars=self.variables)
+            print("---")
+        #Hacemos copia
+        for it in range(3, self.dimBase):
+            newGen = self.gens[it]
+            newDir = Vertex([1 if i == it else 0 for i in range(self.dimBase)], self.base[it], -1, newGen)
+            new_cubes = []
+            for i in range(len(self.cubes)):
+                new_cubes.append(Cube(typeGen=2, other_cube=self.cubes[i], newStart=newDir, id=i+len(self.cubes)))
+                self.totalNodes += new_cubes[i].nodes
+            self.cubes.extend(new_cubes) #Creamos copia
+            stepErased = self.checkEdges(it+1)
+            if printLogs:
+              print("Step "+str(it-1)+": We erase these pairs")
+              for p in stepErased:
+                p[0].PrintVer(fancy=True, vars=self.variables)
+                p[1].PrintVer(fancy=True, vars=self.variables)
+                print("---")
+
+    def printAllCubes(self, fancy = True):
+        for it in range(len(self.cubes)):
+            print("This is cube number: "+str(it+1))
+            self.cubes[it].print_all_nodes(fancy, self.variables)
+
+    def collectResolution(self):
+      cnt = [[] for _ in range(self.dimBase+1)]
+      for ver in self.totalNodes:
+          ind = sum(ver.coordCube)
+          cnt[ind].append(ver)
+      self.Resolution = cnt
+      while [] in cnt:
+        cnt.remove([])
+
+    def getResolution(self):
+      if self.Resolution is None:
+        self.collectResolution
+      return self.Resolution
+
+    def BettiTable(self, ret = False, printBet = True, printInd = False):
+      if self.typeSolver == 3:
+        BettiA = self.solverA.BettiTable(ret=True, printBet=printInd)
+        BettiB = self.solverB.BettiTable(ret=True, printBet=printInd)
+        BettiC = self.solverC.BettiTable(ret=True, printBet=printInd)
+        mxDeg = max(len(BettiA), len(BettiB), len(BettiC)-1)
+        width = max(len(BettiA[0]), len(BettiB[0]), len(BettiC[0])+1)
+        BettiTable = []
+        for i in range(mxDeg):
+          BettiTable.append([0]*width)
+        for i in range(mxDeg):
+          for j in range(width):
+            if i < len(BettiA) and j < len(BettiA[0]):
+              BettiTable[i][j] += BettiA[i][j]
+            if i < len(BettiB) and j < len(BettiB[0]):
+              BettiTable[i][j] += BettiB[i][j]
+            if i < len(BettiC)-1 and j > 0:
+              BettiTable[i][j] += BettiC[i+1][j-1]
+        BettiTable[0][0] = 1
+        if printBet:
+          print("Total Betti table:")
+          for i in range(mxDeg):
+            print(BettiTable[i])
+        if ret:
+          return BettiTable
+      else:
+        if self.Resolution is None:
+          self.collectResolution()
+        mxDeg = max([1+sum(v.coordBase)-sum(v.coordCube) for v in self.totalNodes])
+        width = max([sum(v.coordCube) for v in self.totalNodes])+1
+
+        BettiTable = []
+        for i in range(mxDeg):
+          BettiTable.append([0]*width)
+        for i in range(width):
+          for j in range(len(self.Resolution[i])):
+            BettiTable[sum(self.Resolution[i][j].coordBase)-sum(self.Resolution[i][j].coordCube)][sum(self.Resolution[i][j].coordCube)] += 1
+        if printBet:
+          print("Betti table:")
+          for j in range(mxDeg):
+            print(BettiTable[j])
+        if ret:
+          return BettiTable
+
+    def printBettiTableSeparado(self):
+      assert self.typeSolver == 2, "printBettiTableSeparado: Option only available for Solver number 2"
+      if self.Resolution is None:
+        self.collectResolution()
+      mxDeg = max([1+sum(v.coordBase)-sum(v.coordCube) for v in self.totalNodes])
+      width = max([sum(v.coordCube) for v in self.totalNodes])+1
+
+      for k in range(1, 4):
+        BettiTable = []
+        for i in range(mxDeg):
+          BettiTable.append([0]*width)
+
+        for i in range(width):
+          for j in range(len(self.Resolution[i])):
+            if self.Resolution[i][j].gen == k:
+              BettiTable[sum(self.Resolution[i][j].coordBase)-sum(self.Resolution[i][j].coordCube)][sum(self.Resolution[i][j].coordCube)] += 1
+        print("Betti table "+str(k)+":")
+        for j in range(mxDeg):
+          print(BettiTable[j])
+
+    def printResolution(self):
+      if self.typeSolver == 3:
+        print("Resolution for first ideal A")
+        self.solverA.printResolution()
+        print("Resolution for second ideal B")
+        self.solverB.printResolution()
+        print("Resolution for intersection")
+        self.solverC.printResolution()
+      else:
+        if self.Resolution is None:
+          self.collectResolution()
+        for i in range(len(self.Resolution)):
+            if i > 0 and len(self.Resolution[i-1]) == 0 and len(self.Resolution[i]) == 0:
+              continue
+            print("List for " + str(i))
+            print("Betti number: "+ str(len(self.Resolution[i])))
+            for ver in self.Resolution[i]:
+                ver.PrintVer(True, self.variables)
+
+    def partialResolution(self, part1, simplify = False, printGenerators = False, printIndLogs = False):
+      I = Ideal(self.base)
+      A, B, C = I.generate_subpruning(part1, simplify)
+      if printGenerators:
+        PrintList(A.baseIdeal, self.variables)
+        PrintList(B.baseIdeal, self.variables)
+        PrintList(C.baseIdeal, self.variables)
+      solver1 = Solver(A.baseIdeal, self.variables)
+      solver1.PruningAlgorithm(printLogs = printIndLogs)
+      solver2 = Solver(B.baseIdeal, self.variables)
+      solver2.PruningAlgorithm(printLogs = printIndLogs)
+      solver3 = Solver(C.baseIdeal, self.variables)
+      solver3.PruningAlgorithm(printLogs = printIndLogs)
+      self.solverA = solver1
+      self.solverB = solver2
+      self.solverC = solver3
+        </script>
+        <!--Clase Scarf-->
+        <h3>Clase de los algoritmos de poda</h3>
+        <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">
+            class Scarf:
+    def __init__(self, base_ideals, variables):
+      self.numVars = len(variables)
+      self.variables = variables
+      if type(base_ideals[0]) == str:
+        self.base = parse_base(base_ideals, variables)
+      else:
+        self.base = base_ideals
+      self.dimBase = len(base_ideals)
+      self.cubes = []
+      self.nodesRep = []
+      self.totalNodes = []
+      self.Resolution = None
+      if self.dimBase == 1:
+        self.dimBase = 2
+        self.base.append(self.base[0])
+      if self.dimBase == 2:
+        self.dimBase = 3
+        self.base.append(self.base[0])
+
+    def checkEdges(self, step):
+        for i in range(len(self.nodesRep)):
+          while self.nodesRep[i] in self.totalNodes:
+            self.totalNodes.remove(self.nodesRep[i])
+        toRem = []
+        for i in range(len(self.totalNodes)):
+          if self.totalNodes[i] in toRem:
+            continue
+          cnt = self.totalNodes.count(self.totalNodes[i])
+          if cnt > 1:
+            toRem.append(self.totalNodes[i])
+        for i in range(len(toRem)):
+          self.nodesRep.append(toRem[i])
+          while toRem[i] in self.totalNodes:
+            self.totalNodes.remove(toRem[i])
+
+    def PruningAlgorithm(self, printLogs = False):
+        #Creamos cubo original
+        self.cubes.append(Cube(typeGen=1, numVars=self.numVars, dirs=self.base[0:3], dimBase=self.dimBase, gens=self.gens[0:3]))
+        self.totalNodes += self.cubes[0].nodes
+        self.checkEdges(3)
+        #Hacemos copia
+        for it in range(3, self.dimBase):
+            newGen = self.gens[it]
+            newDir = Vertex([1 if i == it else 0 for i in range(self.dimBase)], self.base[it], -1, newGen)
+            new_cubes = []
+            for i in range(len(self.cubes)):
+                new_cubes.append(Cube(typeGen=2, other_cube=self.cubes[i], newStart=newDir, id=i+len(self.cubes)))
+                self.totalNodes += new_cubes[i].nodes
+            self.cubes.extend(new_cubes) #Creamos copia
+            self.checkEdges(it+1)
+
+    def printAllCubes(self, fancy = True):
+        for it in range(len(self.cubes)):
+            print("This is cube number: "+str(it+1))
+            self.cubes[it].print_all_nodes(fancy, self.variables)
+
+    def collectResolution(self):
+      cnt = [[] for _ in range(self.dimBase+1)]
+      for ver in self.totalNodes:
+          ind = sum(ver.coordCube)
+          cnt[ind].append(ver)
+      self.Resolution = cnt
+      while [] in cnt:
+        cnt.remove([])
+
+    def getResolution(self):
+      if self.Resolution is None:
+        self.collectResolution
+      return self.Resolution
+
+    def BettiTable(self, ret = False, printBet = True, printInd = False):
+      if self.Resolution is None:
+        self.collectResolution()
+      mxDeg = max([1+sum(v.coordBase)-sum(v.coordCube) for v in self.totalNodes])
+      width = max([sum(v.coordCube) for v in self.totalNodes])+1
+
+      BettiTable = []
+      for i in range(mxDeg):
+        BettiTable.append([0]*width)
+      for i in range(width):
+        for j in range(len(self.Resolution[i])):
+          BettiTable[sum(self.Resolution[i][j].coordBase)-sum(self.Resolution[i][j].coordCube)][sum(self.Resolution[i][j].coordCube)] += 1
+      if printBet:
+        print("Betti table:")
+        for j in range(mxDeg):
+          print(BettiTable[j])
+      if ret:
+        return BettiTable
+
+    def printResolution(self):
+      if self.Resolution is None:
+        self.collectResolution()
+      for i in range(len(self.Resolution)):
+          if i > 0 and len(self.Resolution[i-1]) == 0 and len(self.Resolution[i]) == 0:
+            continue
+          print("List for " + str(i))
+          print("Betti number: "+ str(len(self.Resolution[i])))
+          for ver in self.Resolution[i]:
+              ver.PrintVer(True, self.variables)
+        </script>
+        <!--Clase Lyubeznik-->
+        <h3>Clase del algoritmo de resolución de Lyubeznik</h3>
+        <script type="text/notebook-cell" data-kernel="python" data-autorun="true" data-hidden="true">
+            class Lyubeznik:
+    def __init__(self, base_ideals, variables, typeSolver = 1, idx = []):
+      self.numVars = len(variables)
+      self.variables = variables
+      if type(base_ideals[0]) == str:
+        self.base = parse_base(base_ideals, variables)
+      else:
+        self.base = base_ideals
+      self.dimBase = len(base_ideals)
+      if self.dimBase == 1:
+        self.dimBase = 2
+        self.base.append(self.base[0])
+      if self.dimBase == 2:
+        self.dimBase = 3
+        self.base.append(self.base[0])
+      self.cubes = []
+      self.totalNodes = []
+      self.Resolution = None
+      self.solverA = None
+      self.solverB = None
+      self.solverC = None
+      self.typeSolver = typeSolver
+      if typeSolver == 1:
+        self.gens = [0]*self.dimBase
+      else:
+        self.gens = [1 if i+1 in idx else 2 for i in range(self.dimBase)]
+
+    def checkEdges(self, it):
+      toErase = []
+      pairsErased = []
+      newDir = Vertex([1 if i == it else 0 for i in range(self.dimBase)], self.base[it], -1, self.gens[it])
+      for j in range(len(self.totalNodes)):
+        if 1 in self.totalNodes[j].coordCube and self.totalNodes[j].coordCube.index(1) <= it:
+          continue
+        nextNode = self.totalNodes[j].addVec(newDir)
+
+        pos = -1
+        if nextNode in self.totalNodes:
+          pos = self.totalNodes.index(nextNode)
+        if pos != -1:
+          nextNode = self.totalNodes[pos]
+
+        if self.totalNodes[j] not in toErase and nextNode not in toErase and nextNode in self.totalNodes and self.totalNodes[j].check(nextNode) and self.totalNodes[j].gen == nextNode.gen:
+          toErase.append(nextNode)
+          toErase.append(self.totalNodes[j])
+          pairsErased.append([self.totalNodes[j], nextNode])
+
+      for node in toErase:
+        self.totalNodes.remove(node)
+        self.cubes[node.id].nodes.remove(node)
+
+      return pairsErased
+
+    def PruningAlgorithm(self, printLogs = False):
+        #Creamos cubo original
+        self.cubes.append(Cube(typeGen=1, numVars=self.numVars, dirs=self.base[0:3], dimBase=self.dimBase, gens=self.gens[0:3]))
+        self.totalNodes += self.cubes[0].nodes
+        self.checkEdges(0)
+        self.checkEdges(1)
+        self.checkEdges(2)
+        #Hacemos copia
+        for it in range(3, self.dimBase):
+            newGen = self.gens[it]
+            newDir = Vertex([1 if i == it else 0 for i in range(self.dimBase)], self.base[it], -1, newGen)
+            new_cubes = []
+            for i in range(len(self.cubes)):
+                new_cubes.append(Cube(typeGen=2, other_cube=self.cubes[i], newStart=newDir, id=i+len(self.cubes)))
+                self.totalNodes += new_cubes[i].nodes
+            self.cubes.extend(new_cubes) #Creamos copia
+            self.checkEdges(it)
+
+
+        for it in range(self.dimBase):
+          stepErased = self.checkEdges(it)
+          if printLogs:
+            print("Step "+str(it+1)+": We erase these pairs")
+            for p in stepErased:
+              p[0].PrintVer(fancy=True, vars=self.variables)
+              p[1].PrintVer(fancy=True, vars=self.variables)
+              print("---")
+
+    def printAllCubes(self, fancy = True):
+        for it in range(len(self.cubes)):
+            print("This is cube number: "+str(it+1))
+            self.cubes[it].print_all_nodes(fancy, self.variables)
+
+    def collectResolution(self):
+      cnt = [[] for _ in range(self.dimBase+1)]
+      for ver in self.totalNodes:
+          ind = sum(ver.coordCube)
+          cnt[ind].append(ver)
+      self.Resolution = cnt
+      while [] in cnt:
+        cnt.remove([])
+
+    def getResolution(self):
+      if self.Resolution is None:
+        self.collectResolution
+      return self.Resolution
+
+    def BettiTable(self, ret = False, printBet = True, printInd = False):
+      if self.typeSolver == 3:
+        BettiA = self.solverA.BettiTable(ret=True, printBet=printInd)
+        BettiB = self.solverB.BettiTable(ret=True, printBet=printInd)
+        BettiC = self.solverC.BettiTable(ret=True, printBet=printInd)
+        mxDeg = max(len(BettiA), len(BettiB), len(BettiC)-1)
+        width = max(len(BettiA[0]), len(BettiB[0]), len(BettiC[0])+1)
+        BettiTable = []
+        for i in range(mxDeg):
+          BettiTable.append([0]*width)
+        for i in range(mxDeg):
+          for j in range(width):
+            if i < len(BettiA) and j < len(BettiA[0]):
+              BettiTable[i][j] += BettiA[i][j]
+            if i < len(BettiB) and j < len(BettiB[0]):
+              BettiTable[i][j] += BettiB[i][j]
+            if i < len(BettiC)-1 and j > 0:
+              BettiTable[i][j] += BettiC[i+1][j-1]
+        BettiTable[0][0] = 1
+        if printBet:
+          print("Total Lyubeznik Betti table:")
+          for i in range(mxDeg):
+            print(BettiTable[i])
+        if ret:
+          return BettiTable
+      else:
+        if self.Resolution is None:
+          self.collectResolution()
+        mxDeg = max([1+sum(v.coordBase)-sum(v.coordCube) for v in self.totalNodes])
+        width = max([sum(v.coordCube) for v in self.totalNodes])+1
+
+        BettiTable = []
+        for i in range(mxDeg):
+          BettiTable.append([0]*width)
+        for i in range(width):
+          for j in range(len(self.Resolution[i])):
+            BettiTable[sum(self.Resolution[i][j].coordBase)-sum(self.Resolution[i][j].coordCube)][sum(self.Resolution[i][j].coordCube)] += 1
+        if printBet:
+          print("Lyubeznik Betti table:")
+          for j in range(mxDeg):
+            print(BettiTable[j])
+        if ret:
+          return BettiTable
+
+    def printBettiTableSeparado(self):
+      assert self.typeSolver == 2, "printBettiTableSeparado: Option only available for Solver number 2"
+      if self.Resolution is None:
+        self.collectResolution()
+      mxDeg = max([1+sum(v.coordBase)-sum(v.coordCube) for v in self.totalNodes])
+      width = max([sum(v.coordCube) for v in self.totalNodes])+1
+
+      for k in range(1, 4):
+        BettiTable = []
+        for i in range(mxDeg):
+          BettiTable.append([0]*width)
+
+        for i in range(width):
+          for j in range(len(self.Resolution[i])):
+            if self.Resolution[i][j].gen == k:
+              BettiTable[sum(self.Resolution[i][j].coordBase)-sum(self.Resolution[i][j].coordCube)][sum(self.Resolution[i][j].coordCube)] += 1
+        print("Betti table "+str(k)+":")
+        for j in range(mxDeg):
+          print(BettiTable[j])
+
+    def printResolution(self):
+      if self.typeSolver == 3:
+        print("Resolution for first ideal A")
+        self.solverA.printResolution()
+        print("Resolution for second ideal B")
+        self.solverB.printResolution()
+        print("Resolution for intersection")
+        self.solverC.printResolution()
+      else:
+        if self.Resolution is None:
+          self.collectResolution()
+        for i in range(len(self.Resolution)):
+            if i > 0 and len(self.Resolution[i-1]) == 0 and len(self.Resolution[i]) == 0:
+              continue
+            print("List for " + str(i))
+            print("Betti number: "+ str(len(self.Resolution[i])))
+            for ver in self.Resolution[i]:
+                ver.PrintVer(True, self.variables)
+        </script>
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+        <script type="text/notebook-cell" data-kernel="python">
+            I = Ideal()
+faces = I.generateSimplicialComplex(6, 2, simplify=True)
+print(I.baseIdeal)
+        </script>
+<<<<<<< HEAD
+        <h4>Execution of the first pruning algorithm</h4>
+        <script type="text/notebook-cell" data-kernel="python">
+          vars = ["x", "y", "z", "t", "u","v"]
+baseIdeal = ["xz","xt", "yt", "xu", "yu", "zu","yv","zv","tv"]
+solver = Solver(baseIdeal, vars, typeSolver = 1)
+solver.PruningAlgorithm(printLogs = False)
+solver.BettiTable()
+        </script>
+        <h4>Execution of the second pruning algorithm</h4>
+        <script type="text/notebook-cell" data-kernel="python">
+          vars = ["x", "y", "z", "t", "u","v"]
+baseIdeal = ["xz","xt", "yt", "xu", "yu", "zu","yv","zv","tv"]
+part1 = [1,2,4]
+solver = Solver(baseIdeal, vars, typeSolver = 2, idx = part1)
+solver.PruningAlgorithm(printLogs = False)
+solver.printBettiTableSeparado()
+solver.BettiTable()
+        </script>
+        <h4>Execution of the third pruning algorithm</h4>
+        <script type="text/notebook-cell" data-kernel="python">
+          vars = ["x", "y", "z", "t", "u","v"]
+baseIdeal = ["xz","xt", "yt", "xu", "yu", "zu","yv","zv","tv"]
+part1 = [1,2,4]
+solver = Solver(baseIdeal, vars, typeSolver = 3)
+solver.partialResolution(part1 = part1, simplify = True, printGenerators = False)
+solver.BettiTable(printInd = True, printBet = True)
+        </script>
+=======
+>>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
+    </div>
+  </body>
+</html>
