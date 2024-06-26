@@ -9,11 +9,7 @@ window.MathJax = {
     }
   };
 
-<<<<<<< HEAD
   window.onload = function() {
-=======
-window.onload = function() {
->>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
 
     const buttons = Array.from(document.getElementsByClassName("bio-text"));
     const options = Array.from(document.getElementsByClassName("category-text"));
@@ -23,7 +19,6 @@ window.onload = function() {
     const main_body = document.getElementById("maincenter");
     const body = document.body;
     let darkTheme = false;
-<<<<<<< HEAD
     let start = false;
     if(localStorage.getItem('dark')) {
         start = true;
@@ -55,36 +50,19 @@ window.onload = function() {
             localStorage.removeItem('dark',checked);
             SetDark(main_body, sidebar, buttons, elem, options, false);
             SetLight(main_body, sidebar, buttons, elem, options, false);
-=======
-    if(localStorage.getItem('dark')) {
-        SetDark(main_body, sidebar, buttons, elem, options);
-        darkTheme = true;
-        elem.src = moon;
-    }
-    container.addEventListener("click", changeTheme);
-    function changeTheme() {
-        if (darkTheme) {
-            localStorage.removeItem('dark',checked);
-            SetLight(main_body, sidebar, buttons, elem, options);
->>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
             elem.src = sun;
             darkTheme = false;
         }
         else {
             localStorage.setItem('dark',checked);
-<<<<<<< HEAD
             SetLight(main_body, sidebar, buttons, elem, options, false);
             SetDark(main_body, sidebar, buttons, elem, options, false);
-=======
-            SetDark(main_body, sidebar, buttons, elem, options);
->>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
             elem.src = moon;
             darkTheme = true;
         }
     }
 }
 
-<<<<<<< HEAD
 function SetDark(main_body, sidebar, container, elem, options, first) 
 {
     if (first) {
@@ -130,27 +108,4 @@ function SetLight(main_body, sidebar, container, elem, options, first)
             option.classList.toggle("light-mode-option");
         });
     }
-=======
-function SetDark(main_body, sidebar, container, elem, options) 
-{
-    main_body.classList.toggle("dark-mode");
-    sidebar.classList.toggle("dark-mode-sidebar");
-    container.forEach(button => {
-        button.classList.toggle("dark-mode-text");
-    });
-    options.forEach(option => {
-        option.classList.toggle("dark-mode");
-    });
-}
-function SetLight(main_body, sidebar, container, elem, options) 
-{
-    main_body.classList.toggle("dark-mode");
-    sidebar.classList.toggle("dark-mode-sidebar");
-    container.forEach(button => {
-        button.classList.toggle("dark-mode-text");
-    });
-    options.forEach(option => {
-        option.classList.toggle("dark-mode");
-    });
->>>>>>> 0908081cb26e4965d9c5c3a8abedfab90c004a08
 }

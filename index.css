@@ -100,7 +100,8 @@ p,h1,h2{
   width: 150px;
   font-size: medium;
   font-family: 'Courier New', Courier, monospace;
-  border: none;
+  border: grey;
+  border-style:double;
   border-radius: 5px;
   background-color: transparent;
   box-shadow: 15px 15px 10px rgba(0,0,0,0.15);
@@ -249,7 +250,7 @@ details[open] summary::marker {
   padding-left: 50px;
   padding-right: 50px;
 }
-
+/*---------------------------------------------------------------------*/
 /*DARK MODE STUFF*/
 .shadow-dark {
   background-color: linear-gradient(145deg, #23282c, #1e2125);
@@ -267,6 +268,8 @@ details[open] summary::marker {
 .dark-mode { /*General para el comienzo*/
   background-color: #212121;
   color: whitesmoke;
+  transition-property: background-color, color;
+  transition-duration: 0.5s;
 }
 
 .dark-mode-option { /*General para el comienzo*/
@@ -275,12 +278,68 @@ details[open] summary::marker {
 
 .dark-mode-sidebar { /*General para el comienzo*/
   background-color: #212529;
+  transition-property: background-color, color;
+  transition-duration: 0.5s;
 }
 .dark-mode-text {
-  color: mediumpurple;
+  color: rgb(221, 211, 240);
   font-weight: bold;
 }
 
+ /*Cambios iniciales*/
+.dark-mode-sidebar-initial { /*General para el comienzo*/
+  background-color: #212529;
+}
+.dark-mode-text-initial {
+  color: rgb(221, 211, 240);
+  font-weight: bold;
+}
+
+.dark-mode-initial { /*General para el comienzo*/
+  background-color: #212121;
+  color: whitesmoke;
+}
+
+.dark-mode-option-initial { /*General para el comienzo*/
+  color: whitesmoke;
+}
+
+/*LIGHT MODE*/
+
+.light-mode { /*General para el comienzo*/
+  background-color: aliceblue;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+.light-mode-option { /*General para el comienzo*/
+  color: #1a1d20;
+}
+
+.light-mode-sidebar { /*General para el comienzo*/
+  background-color: rgba(227, 241, 241, 0.753);
+  transition-property: background-color, color;
+  transition-duration: 0.5s;
+}
+.light-mode-text {
+  font-weight: bold;
+}
+
+ /*Cambios iniciales*/
+.light-mode-sidebar-initial { /*General para el comienzo*/
+  background-color: rgba(227, 241, 241, 0.753);
+}
+.light-mode-text-initial {
+  font-weight: bold;
+}
+
+.light-mode-initial { /*General para el comienzo*/
+  background-color: aliceblue;
+}
+
+.light-mode-option-initial { /*General para el comienzo*/
+  color: #1a1d20;
+}
 
 
 
