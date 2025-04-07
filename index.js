@@ -8,20 +8,18 @@ window.onload = function() {
     const options = Array.from(document.getElementsByClassName("category-text"));
     const container = document.getElementsByClassName("theme-container")[0];
     var elem = document.getElementById("themeIcon");
-    const sidebar = document.getElementById("sidebar");
-    const main_body = document.getElementById("maincenter");
+    const sidebar = Array.from(document.getElementsByClassName("sidebarTop"));
+    const main_body = document.getElementById("maincenterNew");
     const body = document.body;
     let darkTheme = false;
-    let start = false;
+    let start = true;
     if(localStorage.getItem('dark')) {
-        start = true;
         SetDark(main_body, sidebar, buttons, elem, options, start);
         darkTheme = true;
         elem.src = moon;
     }
     else {
-        start = true;
-        SetLight(main_body, sidebar, buttons, elem, options, start);
+        //SetLight(main_body, sidebar, buttons, elem, options, start);
         darkTheme = false;
         elem.src = sun;
     }
@@ -33,8 +31,8 @@ window.onload = function() {
                 SetDark(main_body, sidebar, buttons, elem, options, start);
             }
             else {
-                SetLight(main_body, sidebar, buttons, elem, options, false);
-                SetLight(main_body, sidebar, buttons, elem, options, start);
+                /*SetLight(main_body, sidebar, buttons, elem, options, false);
+                SetLight(main_body, sidebar, buttons, elem, options, start);*/
             }
             start = false;
         }
@@ -42,13 +40,13 @@ window.onload = function() {
         if (darkTheme) {
             localStorage.removeItem('dark',checked);
             SetDark(main_body, sidebar, buttons, elem, options, false);
-            SetLight(main_body, sidebar, buttons, elem, options, false);
+            //SetLight(main_body, sidebar, buttons, elem, options, false);
             elem.src = sun;
             darkTheme = false;
         }
         else {
             localStorage.setItem('dark',checked);
-            SetLight(main_body, sidebar, buttons, elem, options, false);
+            //SetLight(main_body, sidebar, buttons, elem, options, false);
             SetDark(main_body, sidebar, buttons, elem, options, false);
             elem.src = moon;
             darkTheme = true;
@@ -60,7 +58,9 @@ function SetDark(main_body, sidebar, container, elem, options, first)
 {
     if (first) {
         main_body.classList.toggle("dark-mode-initial");
-        sidebar.classList.toggle("dark-mode-sidebar-initial");
+        sidebar.forEach(bar => {
+            bar.classList.toggle("dark-mode-sidebar-initial");
+        });
         container.forEach(button => {
             button.classList.toggle("dark-mode-text-initial");
         });
@@ -70,7 +70,9 @@ function SetDark(main_body, sidebar, container, elem, options, first)
     }
     else {
         main_body.classList.toggle("dark-mode");
-        sidebar.classList.toggle("dark-mode-sidebar");
+        sidebar.forEach(bar => {
+            bar.classList.toggle("dark-mode-sidebar");
+        });
         container.forEach(button => {
             button.classList.toggle("dark-mode-text");
         });
@@ -81,9 +83,11 @@ function SetDark(main_body, sidebar, container, elem, options, first)
 }
 function SetLight(main_body, sidebar, container, elem, options, first) 
 {
-    if (first) {
+    if (!first) {
         main_body.classList.toggle("light-mode-initial");
-        sidebar.classList.toggle("light-mode-sidebar-initial");
+        sidebar.forEach(bar => {
+            bar.classList.toggle("light-mode-sidebar-initial");
+        });
         container.forEach(button => {
             button.classList.toggle("light-mode-text-initial");
         });
@@ -93,7 +97,9 @@ function SetLight(main_body, sidebar, container, elem, options, first)
     }
     else {
         main_body.classList.toggle("light-mode");
-        sidebar.classList.toggle("light-mode-sidebar");
+        sidebar.forEach(bar => {
+            bar.classList.toggle("light-mode-sidebar-initial");
+        });
         container.forEach(button => {
             button.classList.toggle("light-mode-text");
         });
