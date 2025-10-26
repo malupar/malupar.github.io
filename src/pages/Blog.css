@@ -1,0 +1,25 @@
+.post-list .post-snippet {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-list .post-snippet:last-child {
+  border-bottom: none;
+}
+
+.post-snippet h2 {
+  margin-bottom: 0.25rem;
+}
+
+.post-snippet .post-date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.read-more-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #007BFF;
+}
