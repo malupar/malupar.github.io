@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Montserrat&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap');
-#root {
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap');#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;

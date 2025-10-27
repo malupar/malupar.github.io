@@ -3,19 +3,16 @@ export const posts = [
   {
     id: 'comm-alg', // This will be the URL slug
     title: 'Documentation for Algorithms in Commutative Algebra',
-    date: 'October 26, 2025',
+    date: 'December 3, 2024',
     snippet: 'This is a link to the documentation developped for the different pruning algorithms done for ...',
     externalUrl: 'https://malupar.github.io/MorseResolutions/'
   },
   {
     id: 'coding-theory',
     title: 'Coding Theory - CRM',
-    date: 'October 27, 2025',
+    date: 'May 8, 2024',
     snippet: 'Here I talk about the course taken at the Centre de Recerca Matemàtica "Highlights of Algorithmic Coding".',
     content: `
-      <p>
-            En esta entrada documentaré el contenido visto en Algorithmic Higlights of Coding Theory, organizado por el CRM. 
-          </p>
           <h2>Day 1</h2>
           <p>
             We will start by remembering the basics: <br>
@@ -44,7 +41,7 @@ export const posts = [
         </p>
         <p>
             From now on we will try to maximize the $\\delta (C)$ given a certain rate. Given that the rate and $\\delta$ will vary between 0 and 1 we can represent it as a graph.
-            <h4>Singleton's bound</h4>
+            <h3>Singleton's bound</h3>
             We will now show Singleton's bound which will divide by half the later graph where the following possible combinations remain: <br>
             <details open> <summary class="titulo-desplegable">Proof 1</summary>
                 $$\\text{Let us consider an arbitrary encoding function } E: \\Sigma^k \\to \\Sigma^n \\text{ and let us consider the projection upon the first } k-1 \\text{ coordinates.}$$
@@ -54,11 +51,11 @@ export const posts = [
               </details>
         </p>
         <p>
-            <h4>Reed-Solomon codes(1960) </h4>
+            <h3>Reed-Solomon codes(1960) </h3>
             Let $\\Sigma = F_q$ where $F_q$ represents a finite field with $q$ elements. Then we can represent a message $m = (m_0, ..., m_{k-1}), \\ m(x) \\cong \\sum\\limits_{i = 0}^{k-1} m_i x^i$. <br>
             Let us fix $\\alpha_1, \\alpha_2, ..., \\alpha_n \\in F_q$ such that they are distinct. We will send the tuple $&lt;m(\\alpha_1), m(\\alpha_2), ..., m(\\alpha_n)> \\in F_q^n$.<br>Let us prove that $\\Delta(RS \\ Code) \\geq n-k+1$. Let $m_1$ and $m_2$ be two messages that minimize the Hamming distance. We will define the polynomial $P(x) = (m1-m2)(x) = \\sum\\limits_{i=0}^{k-1}(m_{1,i}-m_{2,i})x^i$. Then, since $m_1 \\neq m_2$ we know that $P(x)$ is non-zero polynomial with degree $\\leq k-1$. This means that $\\# \\{i \\ | \\  P(\\alpha_i) = 0\\} \\leq k-1$, ($P(x)$ can have at most $k-1$ roots which in the worst case scenario might be the parameters that we have fixed). This implies that $\\Delta(m_1, m_2) \\geq n-(k-1) = n-k+1$. <br>
             We have now found an encoding function that matches Singleton's bound, it is time to worry about how to decode our message.
-            <h4>Reed-Solomon Decoding Problem</h4>
+            <h3>Reed-Solomon Decoding Problem</h3>
             <strong>Given:</strong> $F_q, n, k, e = \\#$errors, $\\alpha_1, \\alpha_2, ..., \\alpha_n \\in F_q$ and distinct and a tuple $&lt;y_1, y_2, ..., y_n> \\in F_q^n$.<br>
             <strong>Task:</strong> Find ALL polynomial such that $\\# \\{ i \\ | \\ m(\\alpha_i) \\neq y-i\\} \\leq e$.
             <br>
@@ -76,5 +73,86 @@ export const posts = [
         <strong>Theorem:</strong> $\\forall \\epsilon > 0, \\delta > 0 \\quad \\exists E$ such that $E$ is $(\\epsilon, poly(n))$-List-Decodable and Rate$(E) \\geq 1-\\epsilon+\\delta$
         <h2>Day 3</h2>
     `
-  }
+  },
+  {
+    id: 'machine-learning',
+    title: 'Machine learning basics',
+    date: 'October 26, 2025',
+    snippet: 'Here I show some notes about the ML basics learnt from different university courses, extracurricular courses and other sources.',
+    content: `
+          <h2>What do we mean by "learning"?</h2>
+          We can differentiate between 3 different types of learning or reasonings:
+          <ul>
+            <li>Deduction - Given a list of assumptions and implications, we infer the consequences.</li>
+            <ul>
+            <li>This type of reasoning shows what <b>logical consequences</b> could be derived from a set of facts.</li>
+            <li>If all men are mortal and Socrates is a man, then Socrates must be mortal.</li>
+            </ul>
+            <li>Induction - Given a list of assumptions and consequences, we infer the implications.</li>
+            <ul>
+            <li>This type of reasoning attempts to infer <b>general principles</b> from specific instances.</li>
+            <li>All biological life forms that we know of depend on liquid water to exist. If we discover a new biological life form, it will probably depend on liquid water to exist.</li>
+            </ul>
+            <li>Abduction - Given a list of implications and consequences, we infer the assumptions.</li>
+            <ul>
+            <li>This type of reasoning attempts to infer <b>an explanation</b> for a set of occurrences.</li>
+            <li>The grass is currently wet. When it rains, the grass gets wet. Therefore it must have rained.</li>
+            </ul>
+          </ul>
+          
+          Each of this types of reasonings can be used in ML research, for example, if we consider $A$ our set of assumptions, $B$ our set of consequences and $\\to$ our set of reasonings/principles, we can define:
+          <ul>
+          <li>Deductive reasoning: $P(B | A, \\to)$, probability a patient has cancer based on a set of symptoms and rules (Rule-Based ML or RBML).</li>
+          <li>Inductive reasoning $P(\\to | A, B)$, probability that a user likes this film based on other films that they liked. </li>
+          <li>Abductive reasoning $P(A | \\to, B)$, probability that if a user says they "cannot log in", it is because their username or password is incorrect.</li>
+          </ul>
+
+          Applications of all of this reasonings are not easily distinguishable in practice, but this theoretical distinctions allows for a faster research on ML.
+
+          <h2>Linear models and linear regression</h2>
+
+          Let us assume that out objective is to obtain the most likely model that can associate a set of facts with their consequences. In other words, we would like to get the most likely function $f$ such that $f(x) = y$ for $x \\in A$ and $y \\in B$.
+          </br>
+          We will assume for the rest of this section that our model is of the type $f = f_w + \\varepsilon$ where $f_w(x) = \\sum_{i=1}^n x_i \\cdot w_i + b$ is a linear model and $\\varepsilon$ is a random variable that represents an irreducible error. This type of error is inherent to the task that we are tryint to solve and data that we use.
+          </br>
+          We will also assume that $\\varepsilon \\sim N(\\mu, \\sigma)$, normal distribution with mean $\\mu$ and variance $\\sigma$. Since our linear model has a <i>bias</i> variable $b$, we can just modify it to $b' = b + \\mu$ and assume $\\varepsilon \\sim N(0, \\sigma)$.
+          </br>
+          Therefore, we would like to get $\\underset{w}{\\operatorname{argmax}} P(f_w | D)$ where $D$ is our set of data $D = \\{(x, y) | f(x) = y\\}$.
+          </br>
+          $\\underset{w}{\\operatorname{argmax}} P(f_w | D) = \\underset{w}{\\operatorname{argmax}} P(D | f_w) \\cdot \\frac{P(f_w)}{P(D)}$, given that the probability of our data is constant and (we assume) that the space of functions follows a uniform distribution we would like to get $\\underset{w}{\\operatorname{argmax}} P(D | f_w)$.
+          
+          </br>
+          Since all elements of data are independent from each other, we would like to get $\\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\prod} P((x, y) | f_w)$.
+          </br>
+          $\\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\prod} P((x, y) | f_w) = \\underset{w}{\\operatorname{argmax}} \\underset{(x, y)\\in D}{\\prod} P(y \ | x, f_w) \\cdot P(x | f_w) = \\underset{w}{\\operatorname{argmax}} \\underset{(x, y)\\in D}{\\prod} P(y \ | x, f_w) \\cdot P(x) \\cdot P(f_w)$. Since $x$ is independent from the linear model $f_w$. Using again that $f_w$ follows a uniform distribution and $x$ is independent from $f_w$ we get:
+          </br>
+          $\\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\prod} P(y| x, f_w)$
+          </br>
+          This represents the probability of the consequences, $y$, given the initial set of facts, $x$, and having fixed a set of weights and bias,$f_w$. This represents our random variable $\\varepsilon = y-f_w(x)$, since it follows a normal distribution we get:
+          $\\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\prod} \\frac{1}{2 \\pi \\sigma} e^{-(\\frac{y-f_w(x)}{2 \\sigma})^2}$, we will assume that $\\sigma$ is a constant (homoscedasticity) and removing the constants and using a monotonic function such as the logarithm we get:
+          </br>
+          $\\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\prod} \\frac{1}{2 \\pi \\sigma} e^{-(\\frac{y-f_w(x)}{2 \\sigma})^2} = \\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\prod} e^{-(\\frac{y-f_w(x)}{2 \\sigma})^2} = \\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\sum}-(\\frac{y-f_w(x)}{2 \\sigma})^2 = \\underset{w}{\\operatorname{argmin}} \\underset{(x, y) \\in D}{\\sum}(\\frac{y-f_w(x)}{2 \\sigma})^2 =$ $\\underset{w}{\\operatorname{argmin}} \\underset{(x, y) \\in D}{\\sum}(y-f_w(x))^2$
+          </br>
+          We have obtained that we want to find the $w$ such that it minimizes the expression $\\underset{(x, y) \\in D}{\\prod} (y-f_w(x))^2$. This expression is the minimum squared error (MSE) used in linear regression.
+          </br>
+          Our list of assumptions is the following:
+          <ul>
+          <li>We have only worked with the space of linear functions.</li>
+          <li>We have assumed that the likeliness of a linear function follows a uniform distribution.</li>
+          <li>We have assumed that our error follows a normal distribution (this assumption is optional and could be generalised with Central Limit Theorem).</li>
+          <li>We have assumed that our data is independent and identically distributed.</li>
+          <li>We have assumed that our data is independent from the error term.</li>
+          <li>We have assumed homocedasticity.</li>
+          </ul>
+        
+          We can ignore homocedasticity and assume heteroskedasticity and that for each $(x_i, y_i)$ there exists a $\\sigma_i$, $\\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\prod} P(y| x, f_w) = \\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\prod} \\frac{1}{2 \\pi \\sigma_i} e^{-(\\frac{y-f_w(x)}{2 \\sigma_i})^2} = \\underset{w}{\\operatorname{argmax}} \\underset{(x, y) \\in D}{\\sum} -\\log(2 \\pi \\sigma_i) -(\\frac{y-f_w(x)}{2 \\sigma_i})^2$
+          $\\underset{w}{\\operatorname{argmin}} \\underset{(x, y) \\in D}{\\sum} \\log(\\sigma_i) +(\\frac{y-f_w(x)}{2 \\sigma_i})^2 = \\underset{w}{\\operatorname{argmin}} \\underset{(x, y) \\in D}{\\sum} (\\frac{y-f_w(x)}{2 \\sigma_i})^2 = \\underset{w}{\\operatorname{argmin}} \\underset{(x, y) \\in D}{\\sum} (\\frac{y-f_w(x)}{\\sigma_i})^2$
+          </br>
+          Therefore, if we know for each set of data, its respective variance we have a new cost function.
+
+          <h2>Optimization algorithms</h2>
+
+          Depending on the initial assumptions, task, model and data that we have chosen to work with we will commonly end up having to find the arguments that minimize a certain function (in case it maximizes we can just negate).
+          `
+  },
 ];
