@@ -22,3 +22,53 @@
   text-decoration: none;
   color: #007BFF;
 }
+
+.blog-post-wrapper {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 150ch) 1fr;
+  
+  padding: 2rem;
+  gap: 2rem; /* The space between columns */
+}
+
+.blog-post-layout-inner {
+  position: relative;
+  width: 100%;
+  max-width: 150ch;
+  grid-column: 2 / 3;
+}
+
+.blog-post-content {
+  /* The article just fills its parent wrapper */
+  width: 100%;
+}
+
+.blog-post-timeline {
+  grid-column: 3 / 4;
+  position: sticky;
+  top: 120px; /* Stick 80px from the top (to stay below your navbar) */
+  align-self: flex-start;
+  width: 400px;
+}
+
+.blog-post-content h2[id],
+.blog-post-content h3[id] {
+  scroll-margin-top: 80px; 
+}
+
+/* Hide timeline on smaller screens */
+@media (max-width: 1024px) {
+  .blog-post-grid-layout {
+    /* Revert to a simple single-column */
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .blog-post-content {
+    grid-column: 1 / 2;
+  }
+  
+  .blog-post-timeline {
+    display: none; /* Hide the timeline */
+  }
+}
